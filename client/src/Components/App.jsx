@@ -8,6 +8,7 @@
 /* eslint-disable import/extensions */
 import React from 'react';
 import $ from 'jquery';
+import axios from 'axios';
 import GalleryMain from './GalleryMain.jsx';
 import GalleryDetail from './GalleryDetail.jsx';
 import SharePopupInner from './SharePopupInner.jsx';
@@ -26,6 +27,7 @@ class App extends React.Component {
       detailView: 'non-grid',
       mainView: 'main',
     };
+
     this.renderView = this.renderView.bind(this);
     this.onShowAll = this.onShowAll.bind(this);
     this.onExitDetail = this.onExitDetail.bind(this);
@@ -39,23 +41,17 @@ class App extends React.Component {
     this.changeMainViewOnWindowSize = this.changeMainViewOnWindowSize.bind(this);
     this.showDetailGrid = this.showDetailGrid.bind(this);
     this.likeStatusUpdate = this.likeStatusUpdate.bind(this);
+    this.getRoomPhotos = this.getRoomPhotos.bind(this);
   }
 
   componentDidMount() {
     window.addEventListener('resize', this.changeViewOnWindowSize);
     window.addEventListener('resize', this.changeMainViewOnWindowSize);
-
-    $.ajax({
-      method: 'GET',
-      url: 'http://localhost:3004/api/51/photogallery',
-      success: (data) => {
-        this.setState({ photos: data });
-      },
-      error: (err) => {
-        console.log('err on ajax get: ', err);
-      },
-    });
+    // const id = window.location.pathname.split('/')[2];
+    this.getRoomPhotos(51);
   }
+
+
 
   onShowAll() {
     this.setState({ view: 'showAll' });
@@ -72,6 +68,19 @@ class App extends React.Component {
   onClickDetailHandler() {
     this.setState({
       showSharePopup: false,
+    });
+  }
+
+  getRoomPhotos(id) {
+    $.ajax({
+      method: 'GET',
+      url: `/api/${id}/photogallery`,
+      success: (data) => {
+        this.setState({ photos: data });
+      },
+      error: (err) => {
+        console.log('err on ajax get: ', err);
+      },
     });
   }
 

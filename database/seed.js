@@ -1,3 +1,4 @@
+const mongoose = require('mongoose');
 const db = require('./index.js');
 const Gallery = require('./Gallery.js');
 
@@ -610,8 +611,16 @@ const sampleGallery = [{
 ];
 
 const insertSampleGalleries = function () {
-  Gallery.create(sampleGallery)
-    .then(() => db.disconnect());
+  Gallery.db.dropDatabase();
+
+  Gallery.create(sampleGallery, (err) => {
+    if (err) {
+      console.log(err);
+    } else {
+      mongoose.disconnect();
+      console.log('mongo disconencted');
+    }
+  });
 };
 
 insertSampleGalleries();

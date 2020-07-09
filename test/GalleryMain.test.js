@@ -1,6 +1,6 @@
 import GalleryMain from '../client/src/Components/GalleryMain.jsx';
 
-describe ('<GalleryMain /> rendering', () => {
+describe('<GalleryMain /> rendering', () => {
   const photos = {
     user_id: 0,
     room_id: 0,
@@ -9,15 +9,15 @@ describe ('<GalleryMain /> rendering', () => {
       name: null,
       saved: false,
     },
-  }
+  };
 
-  it ('check if <GalleryMain/> is a <div></div>', () => {
-    let wrapper = shallow(<GalleryMain photos={photos}/>);
-    expect (wrapper.type()).toEqual('div');
+  it('check if <GalleryMain/> is a <div></div>', () => {
+    const wrapper = shallow(<GalleryMain photos={photos} />);
+    expect(wrapper.type()).toEqual('div');
   });
 
-  it ('should find 5 div container for GalleryMain component', () => {
-    let wrapper = mount(<GalleryMain photos={photos}/>);
+  it('should find 5 div container for GalleryMain component', () => {
+    const wrapper = mount(<GalleryMain photos={photos} />);
     expect(wrapper.find('div.gallery-container')).toHaveLength(5);
   });
 

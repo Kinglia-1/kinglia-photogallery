@@ -4,8 +4,10 @@ function getPhotos(req, res) {
   const { roomId } = req.params;
   Models.getPhotos(roomId, (err, data) => {
     if (err) {
+      console.log(err);
       res.status(400).send(err);
     } else {
+      console.log(data);
       res.status(200).send(data);
     }
   });
@@ -35,4 +37,9 @@ function updateSaveToList(req, res) {
   });
 }
 
-module.exports = { getPhotos, postSaveToList, updateSaveToList };
+const deleteItem = (req, res) => {
+
+};
+module.exports = {
+  getPhotos, postSaveToList, updateSaveToList, deleteItem,
+};

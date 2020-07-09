@@ -4,48 +4,69 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "react-dev": "webpack -d --watch",
-    "server-dev": "nodemon server/index.js",
-    "start": "node server/index.js",
+    "build": "webpack -d --watch",
+    "start": "nodemon server/index.js",
     "db:setup": "node database/seed.js",
     "test": "jest"
   },
   "author": "Jin Park",
   "license": "ISC",
   "devDependencies": {
-    "babel-core": "^6.23.1",
-    "babel-jest": "^26.0.1",
+    "@babel/cli": "^7.10.4",
+    "@babel/core": "^7.10.4",
+    "@babel/plugin-transform-runtime": "^7.10.4",
+    "@babel/preset-env": "^7.10.4",
+    "@babel/preset-react": "^7.10.4",
+    "babel-jest": "^26.1.0",
+    "babel-loader": "^8.1.0",
     "babel-plugin-transform-export-extensions": "^6.22.0",
-    "babel-preset-es2015": "^6.22.0",
-    "babel-preset-react": "^6.23.0",
     "css-loader": "^3.6.0",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
-    "eslint": "^7.2.0",
+    "eslint": "^7.4.0",
     "eslint-config-airbnb": "^18.2.0",
-    "eslint-plugin-import": "^2.21.2",
-    "eslint-plugin-jsx-a11y": "^6.3.0",
-    "eslint-plugin-react": "^7.20.0",
-    "eslint-plugin-react-hooks": "^4.0.4",
-    "jest": "^26.0.1",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-jsx-a11y": "^6.3.1",
+    "eslint-plugin-react": "^7.20.3",
+    "eslint-plugin-react-hooks": "^4.0.6",
+    "jest": "^26.1.0",
     "react-inlinesvg": "^2.0.0",
     "react-svg-loader": "^3.0.3",
     "style-loader": "^1.2.1",
     "svg-inline-loader": "^0.8.2",
-    "webpack": "^2.2.1"
+    "webpack": "^4.43.0"
   },
   "dependencies": {
-    "@babel/preset-env": "^7.10.3",
-    "@babel/preset-react": "^7.10.1",
+    "@babel/runtime": "^7.10.4",
     "axios": "^0.19.2",
-    "babel-loader": "^8.1.0",
-    "body-parser": "^1.17.0",
+    "babel-eslint": "^10.1.0",
+    "body-parser": "^1.19.0",
     "cors": "^2.8.5",
-    "express": "^4.15.0",
-    "jquery": "^3.1.1",
-    "mongoose": "^4.9.6",
+    "express": "^4.17.1",
+    "jquery": "^3.5.1",
+    "mongoose": "^5.9.22",
     "path": "^0.12.7",
-    "react": "^15.4.2",
-    "react-dom": "^15.4.2"
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
+  "eslintConfig": {
+    "root": true,
+    "extends": "airbnb",
+    "env": {
+      "es6": true,
+      "browser": true,
+      "node": true
+    },
+    "parser": "babel-eslint",
+    "parserOptions": {
+      "sourceType": "module",
+      "allowImportExportEverywhere": true
+    },
+    "rules": {
+      "import/extensions": [
+        1,
+        "ignorePackages"
+      ]
+    }
   }
 }

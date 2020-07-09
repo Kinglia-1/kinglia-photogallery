@@ -1,9 +1,10 @@
-/* eslint-disable import/newline-after-import */
-/* eslint-disable no-multiple-empty-lines */
-
 const mongoose = require('mongoose');
-const mongoUri = 'mongodb://localhost/photoGallery';
 
-const db = mongoose.connect(mongoUri);
+const mongoUri = 'mongodb://localhost/bnbphotos';
+
+mongoose.connect(mongoUri, { useNewUrlParser: true, useUnifiedTopology: true })
+  .catch((err) => console.log(err));
+
+const db = mongoose.connection;
 
 module.exports = db;

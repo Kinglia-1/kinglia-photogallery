@@ -27,6 +27,10 @@ function updateSaveToList(roomId, id, listName, savedStatus, callback) {
     }, callback);
 }
 
+const deleteItem = (roomId, listName, callback) => {
+  Gallery.delete({ room_id: roomId });
+};
+
 module.exports = {
-  getPhotos, postSaveToList, updateSaveToList,
+  getPhotos, postSaveToList, updateSaveToList, deleteItem,
 };

@@ -9,12 +9,13 @@ module.exports = {
     filename: 'bundle.js',
     path: DIST_DIR,
   },
+  mode: 'production',
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.jsx?/,
         include: SRC_DIR,
-        loader: 'babel-loader',
+        loader: 'babel-loader?cacheDirectory',
         query: {
           presets: ['@babel/preset-env', '@babel/preset-react'],
         },
