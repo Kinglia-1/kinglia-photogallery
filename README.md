@@ -16,9 +16,9 @@
       "room_id": "Number",
       "room_photos": [
         {
-        "imageId": "String",
-        "imageUrl": "String",
-        "imageName": "String",
+        "photoId": "String",
+        "photoUrl": "String",
+        "photoName": "String",
         "description": "String"
         },
       ],
@@ -37,10 +37,10 @@
 
 ```json
     { "room_Id": "Number",
-      "images":[
+      "photos":[
         {
-          "imageUrl": "String",
-          "imageName": "String",
+          "photoUrl": "String",
+          "photoName": "String",
           "description": "String",
         }
       ]
@@ -61,8 +61,8 @@
 
 ```json
     {
-        "imageUrl": "String",
-        "imageName": "String",
+        "photoUrl": "String",
+        "photoName": "String",
         "description": "String"
     }
 ```
