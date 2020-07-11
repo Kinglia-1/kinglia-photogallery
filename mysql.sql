@@ -17,7 +17,7 @@ CREATE TABLE rooms (
 );
 
 CREATE TABLE fav_lists (
-  list_id TINYINT NOT NULL,
+  list_id TINYINT UNSIGNED NOT NULL,
   list_name VARCHAR(40) NOT NULL,
   FOREIGN KEY (user_id) REFERENCES users(user_id)
     ON UPDATE CASCADE
@@ -26,7 +26,7 @@ CREATE TABLE fav_lists (
 );
 
 CREATE TABLE fav_rooms (
-  fav_room_id BIGINT NOT NULL,
+  fav_room_id TINYINT UNSIGNED NOT NULL,
   FOREIGN KEY (list_id) REFERENCES fav_lists(list_id)
     ON DELETE CASCADE,
   FOREIGN KEY (room_id) REFERENCES rooms(room_id)

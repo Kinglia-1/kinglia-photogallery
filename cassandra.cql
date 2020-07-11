@@ -6,13 +6,12 @@ CREATE KEYSPACE IF NOT EXISTS bnbroom WITH replication =
 USE bnbroom;
 
 CREATE TABLE photos_by_room (
-  room_id timeuuid,
+  room_id bigint,
   photo_id timeuuid,
   photo_url text,
   photo_description text,
   photo_name text,
   photo_order tinyint,
-  is_main_photo boolean,
   PRIMARY KEY((room_id), photo_id)
 )
 WITH comment = 'Get photos by room id’;
@@ -23,14 +22,16 @@ CREATE TABLE favlists_by_users (
   list_name text,
   PRIMARY KEY ((user_id), list_id)
 )
+WITH CLUSTERING ORDER BY (list_id DESC)
 WITH comment = ‘Get favorite lists by user id’;
 
-CREATE TABLE rooms_by_favlist (
+CREATE TABLE favrooms_by_favlist (
   list_id timeuuid,
   room_name text,
   room_id bigint,
-  created_at timestamp,
+  created_at_id timeuuid,
   PRIMARY KEY ((list_id), created_at)
 )
+WITH CLUSTERING ORDER BY (created_at_id DESC)
 WITH comment = 'Get rooms in user's specific favorite list';
 
