@@ -23,14 +23,14 @@ CREATE TABLE favlists_by_users (
   list_name text,
   PRIMARY KEY ((user_id), list_id)
 )
-WITH comment = ‘Get favorite lists by user id’
+WITH comment = ‘Get favorite lists by user id’;
 
-CREATE TABLE room_by_user_favlist (
-  user_id timeuuid,
+CREATE TABLE rooms_by_favlist (
   list_id timeuuid,
   room_name text,
   room_id bigint,
   created_at timestamp,
-  PRIMARY KEY ((list_id, user_id), room_id)
+  PRIMARY KEY ((list_id), created_at)
 )
 WITH comment = 'Get rooms in user's specific favorite list';
+

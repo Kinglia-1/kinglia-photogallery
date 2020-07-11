@@ -72,7 +72,7 @@
 
 **Path Parameters:**
   * `room_id` room id
-
+  * 
 **Success Status Code:** `204`
 
 
