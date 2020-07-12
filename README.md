@@ -4,7 +4,7 @@
   * GET `/api/rooms/{room_id}/photos`
 
 **Path Parameters:**
-  * `room_id` room id
+  * `room_id` room's id
 
 **Success Status Code:** `200`
 
@@ -12,7 +12,6 @@
 
 ```json
     {
-      "_id": "String",
       "room_id": "Number",
       "room_photos": [
         {
@@ -29,7 +28,7 @@
   * POST `/api/rooms/{room_id}/photos`
 
 **Path Parameters:**
-  * `room_id` room id
+  * `room_id` room's id
 
 **Success Status Code:** `201`
 
@@ -52,7 +51,7 @@
   * PUT `/api/rooms/{room_id}/photos/{photo_id}`
 
 **Path Parameters:**
-  * `room_id` room id
+  * `room_id` room's id
   * `photo_id` Photo's Id
 
 **Success Status Code:** `204`
@@ -71,8 +70,8 @@
   * DELETE `/api/rooms/{room_id}/photos/{photo_id}`
 
 **Path Parameters:**
-  * `room_id` room id
-  * 
+  * `room_id` room's id
+  * `photo_id` photo's id
 **Success Status Code:** `204`
 
 

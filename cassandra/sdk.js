@@ -2,12 +2,12 @@ const AWS = require('aws-sdk');
 
 const s3 = new AWS.S3({ apiVersion: '2006-03-01' });
 
-const params = {
-  Bucket: 'bnbphotos23',
-  MaxKeys: 1000,
-};
+// const params = {
+//   Bucket: 'bnbphotos23',
+//   MaxKeys: 1000,
+// };
 
-const getPhotos = (params) => {
+const getPhotos = () => {
   return s3.listObjectsV2({ Bucket: 'bnbphotos23' }).promise()
     .then((data) => {
       const allPhotos = data.Contents.map((photo) => {
@@ -20,7 +20,6 @@ const getPhotos = (params) => {
     .catch((err) => {
       console.log(err);
     });
-
 };
 
 module.exports = { getPhotos };
