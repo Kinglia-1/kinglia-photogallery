@@ -22,4 +22,7 @@ const getPhotos = () => {
     });
 };
 
+// getPhotos().then((data) => {
+//  console.log('SDK GET PHOTOS', data)
+// })
 module.exports = { getPhotos };
