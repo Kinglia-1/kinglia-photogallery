@@ -29,7 +29,7 @@ const allPhotos = (roomData) => {
       const photo_name = photosArr[k].photo_name;
       const photo_order = photosArr[k].photo_order;
       const data = `${room_id},${photo_id},${photo_url},${photo_description},${photo_name},${photo_order}\n`;
-      result[photoIndex] = data
+      result[photoIndex] = data;
       photoIndex += 1;
     }
   }
@@ -40,22 +40,23 @@ const photoDataArray = allPhotos(roomsData);
 // console.log(photoDataArray);
 
 const writeMassivePhotos = (writer, data, callback) => {
-  let i = 100;
+  let i = 0;
   let dataIndex = 0;
-  console.log('wrte',data)
   const write = () => {
     let ok = true;
     do {
+      if (i % 1000000 === 0) {
+        console.log('wrote 1 MM rows');
+      }
       i += 1;
-
       if (i === 0) {
         writer.write(data[dataIndex], 'utf-8', callback);
       } else {
         ok = writer.write(data[dataIndex], 'utf-8');
       }
       dataIndex += 1;
-    } while (i > 0 && ok);
-    if (i > 0) {
+    } while (i < data.length && ok);
+    if (i < data.length) {
       writer.once('drain', write);
     }
   };
@@ -64,7 +65,9 @@ const writeMassivePhotos = (writer, data, callback) => {
 };
 
 writeMassivePhotos(writePhotos, photoDataArray, () => {
-  writePhotos.end();
+  writePhotos.end(() => {
+    console.log('writing finished')
+  });
 });
 
 // // denormalize data and write to CSV

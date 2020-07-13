@@ -5,7 +5,7 @@ const csvWriter = require('csv-write-stream');
 const path = require('path');
 const { roomRecords } = require('./normalData.js');
 
-const userNRecords = 100001;
+const userNRecords = 1000001;
 
 const generateFavLists = () => {
   const favLists = [];

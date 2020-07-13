@@ -1,6 +1,6 @@
 const faker = require('faker');
 const fs = require('fs');
-
+const TimeUuid = require('cassandra-driver').types.TimeUuid;
 const writeUsers = fs.createWriteStream('users.csv');
 writeUsers.write('id,username,avatar\n', 'utf8');
 
@@ -13,7 +13,8 @@ function writeTenMillionUsers(writer, encoding, callback) {
       i -= 1;
       id += 1;
       const username = faker.internet.userName();
-      const avatar = faker.image.avatar();
+      const avatar = faker.image.avatar()
+
       const data = `${id},${username},${avatar}\n`;
       if (i === 0) {
         writer.write(data, encoding, callback);
