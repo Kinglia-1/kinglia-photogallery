@@ -7,7 +7,9 @@
     "build": "webpack -d --watch",
     "start": "nodemon server/index.js",
     "db:setup": "node database/seed.js",
-    "test": "jest"
+    "test": "jest",
+    "seedcqlphotos": "node --max-old-space-size=8192 ./cassandra/seedPhotos.js",
+    "seedcqllists": "node --max-old-space-size=8192 ./cassandra/seedFavLists.js"
   },
   "author": "Jin Park",
   "license": "ISC",
@@ -38,16 +40,23 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.10.4",
+    "aws-sdk": "^2.713.0",
     "axios": "^0.19.2",
     "babel-eslint": "^10.1.0",
     "body-parser": "^1.19.0",
+    "cassandra-driver": "^4.5.2",
     "cors": "^2.8.5",
+    "csv-write-stream": "^2.0.0",
+    "dayjs": "^1.8.29",
     "express": "^4.17.1",
+    "faker": "^4.1.0",
     "jquery": "^3.5.1",
     "mongoose": "^5.9.22",
+    "node-time-uuid": "^0.1.5",
     "path": "^0.12.7",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "uuid": "^8.2.0"
   },
   "eslintConfig": {
     "root": true,

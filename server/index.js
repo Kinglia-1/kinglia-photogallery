@@ -29,4 +29,4 @@ app.delete('/api/:roomId/photogallery', (req, res) => {
   Controllers.deleteItem(req, res);
 });
 
-app.listen(port, () => console.log(`Example app listening at http://localhost:${port}/rooms`));
+app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`));
