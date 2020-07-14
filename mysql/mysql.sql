@@ -6,7 +6,6 @@ USE bnbphotos;
 
 CREATE TABLE users (
   user_id BIGINT UNSIGNED NOT NULL,
-  user_name VARCHAR(25) NOT NULL,
   PRIMARY KEY (user_id)
 );
 

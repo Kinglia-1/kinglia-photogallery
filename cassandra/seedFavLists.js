@@ -8,13 +8,12 @@ const path = require('path');
 const dayjs = require('dayjs')
 const { roomRecords } = require('./normalData.js');
 
-const userNRecords = 10;
+const userNRecords = 1000000;
 const listArray = [];
 const writeFavRooms = (listIds, fileNum = 1) => {
   const filePath = path.join(__dirname, `../csv/cassfavRooms${fileNum}.csv`);
   const writable = fs.createWriteStream(filePath);
   writerRooms.pipe(writable);
-  ;
   for (let i = 0; i < listIds.length; i++) {
     const listId = listIds[i];
     const randomNRooms = Math.floor(Math.random() * (6 - 1)) + 1;
@@ -61,11 +60,9 @@ const writeFavListsToCsv = (fileNum = 1) => {
       console.log(
         'writing fav lists finished'
       )
-      // process.exit();
     });
   });
   return listArray;
-  // callback(listArray);
 
 };
 

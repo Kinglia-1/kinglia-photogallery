@@ -1,11 +1,6 @@
 const AWS = require('aws-sdk');
-
+const path = require('path')
 const s3 = new AWS.S3({ apiVersion: '2006-03-01' });
-
-// const params = {
-//   Bucket: 'bnbphotos23',
-//   MaxKeys: 1000,
-// };
 
 const getPhotos = () => {
   return s3.listObjectsV2({ Bucket: 'bnbphotos23' }).promise()
@@ -21,8 +16,5 @@ const getPhotos = () => {
       console.log(err);
     });
 };
-
-// getPhotos().then((data) => {
-//  console.log('SDK GET PHOTOS', data)
-// })
+console.log(path.parse(process.cwd()).root)
 module.exports = { getPhotos };
