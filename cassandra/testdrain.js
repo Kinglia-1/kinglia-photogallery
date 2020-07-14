@@ -27,7 +27,6 @@ function writeTenMillionUsers(writer, encoding, callback) {
       }
     }
     while (i > 0 && ok);
-
     if (i > 0) {
 // had to stop early!
 // write some more once it drains

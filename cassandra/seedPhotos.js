@@ -2,14 +2,15 @@
 /* eslint-disable camelcase */
 const fs = require('fs');
 const path = require('path');
-
+const TimeUuid = require('cassandra-driver').types.TimeUuid;
+const faker = require('faker');
 const filePath = path.join(__dirname, '../csv/cassphotos1.csv');
 const writePhotos = fs.createWriteStream(filePath);
 writePhotos.write('room_id,photo_id,photo_url,photo_description,photo_name,photo_order\n', 'utf8');
 
 const { photosUrls } = require('./photosUrls.js');
 
-const roomRecords = 1000001;
+const roomRecords = 1001;
 //change this to N number of records
 
 //normal data
