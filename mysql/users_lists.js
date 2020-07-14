@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 const fs = require('fs');
 const path = require('path');
 const faker = require('faker');
@@ -5,9 +6,9 @@ const faker = require('faker');
 
 const usersFile = path.join(__dirname, '../csv/users.csv');
 const writeUsers = fs.createWriteStream(usersFile);
-writeUsers.write('user_id\n', 'utf8');
+writeUsers.write('user_id,user_name\n', 'utf8');
 
-const writeMassiveRooms = (start, number, callback) => {
+const writeMassiveUser = (start, number, callback) => {
   let i = start;
   const stop = start + number;
   let memory = true;
@@ -17,18 +18,25 @@ const writeMassiveRooms = (start, number, callback) => {
       if (i % (stop / 10) === 0) {
         console.log('wrote 1/10 of file');
       }
-      const room_id = i;
+      const user_id = i;
+      const user_name = faker.name.findName();
       i += 1;
-      const room_name = faker.address.streetName();
-      const string = `${room_id},${room_name}\n`;
+      const string = `${user_id},${user_name}\n`;
       if (i === 0) {
-        writeRooms.write(string, 'utf8', callback);
+        writeUsers.write(string, 'utf8', callback);
       } else {
-        memory = writeRooms.write(string, 'utf8');
+        memory = writeUsers.write(string, 'utf8');
       }
     }
     if (i < stop) {
-      writeRooms.once('drain', write);
+      writeUsers.once('drain', write);
     }
   };
   write();
+};
+
+writeMassiveUser(0, 1000000, () => {
+  writeUsers.on('finish', () => {
+    console.log('writing users finished');
+  });
+});
