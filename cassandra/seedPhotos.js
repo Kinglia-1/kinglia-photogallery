@@ -36,7 +36,7 @@ const allPhotos = (roomData) => {
   return result;
 };
 
-const photoDataArray = allPhotos(roomsData);
+// const photoDataArray = allPhotos(roomsData);
 // console.log(photoDataArray);
 
 const writeMassivePhotos = (writer, data, callback) => {
@@ -64,7 +64,7 @@ const writeMassivePhotos = (writer, data, callback) => {
   write();
 };
 
-writeMassivePhotos(writePhotos, photoDataArray, () => {
+writeMassivePhotos(writePhotos, allPhotos(roomsData), () => {
   writePhotos.end(() => {
     console.log('writing finished')
   });

@@ -27,12 +27,11 @@ WITH comment = ‘Get favorite lists by user id’;
 
 CREATE TABLE favrooms_by_favlist (
   list_id timeuuid,
-  room_name text,
   room_id bigint,
-  created_at_id timeuuid,
+  room_name text,
+  created_at timestamp,
   PRIMARY KEY ((list_id), created_at)
 )
-
 WITH CLUSTERING ORDER BY (created_at_id DESC)
 WITH comment = 'Get rooms in user's specific favorite list';
 

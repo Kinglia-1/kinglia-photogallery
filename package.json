@@ -8,7 +8,8 @@
     "start": "nodemon server/index.js",
     "db:setup": "node database/seed.js",
     "test": "jest",
-    "seedcql": "node --max-old-space-size=8192 ./cassandra/seedPhotos.js"
+    "seedcqlphotos": "node --max-old-space-size=8192 ./cassandra/seedPhotos.js",
+    "seedcqllists": "node --max-old-space-size=8192 ./cassandra/seedFavLists.js"
   },
   "author": "Jin Park",
   "license": "ISC",
@@ -46,6 +47,7 @@
     "cassandra-driver": "^4.5.2",
     "cors": "^2.8.5",
     "csv-write-stream": "^2.0.0",
+    "dayjs": "^1.8.29",
     "express": "^4.17.1",
     "faker": "^4.1.0",
     "jquery": "^3.5.1",
