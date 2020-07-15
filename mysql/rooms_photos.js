@@ -5,12 +5,12 @@ const path = require('path');
 const faker = require('faker');
 const { photosUrls } = require('../cassandra/photosUrls.js');
 
-const roomsFile = path.join(__dirname, '/Volumes/Seagate Backup Plus Drive/SDC_CSV_FILES/rooms.csv');
-const writeRooms = fs.createWriteStream(roomsFile);
+const roomsFile = path.join(__dirname, '../csv/rooms.csv');
+const writeRooms = fs.createWriteStream('/Volumes/Seagate Backup Plus Drive/SDC_CSV_FILES/rooms.csv');
 writeRooms.write('room_id,room_name\n', 'utf8');
 
-const photosFile = path.join(__dirname, '/Volumes/Seagate Backup Plus Drive/SDC_CSV_FILES/photos.csv');
-const writePhotos = fs.createWriteStream(photosFile);
+const photosFile = path.join(__dirname, '../csv/photos.csv');
+const writePhotos = fs.createWriteStream('/Volumes/Seagate Backup Plus Drive/SDC_CSV_FILES/photos.csv');
 writePhotos.write('photo_id,photo_description,photo_url,photo_order,room_id\n');
 
 const writeMassiveRooms = (start, number, callback) => {
