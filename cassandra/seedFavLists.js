@@ -52,7 +52,6 @@ const writeFavListsToCsv = (fileNum = 1) => {
         list_name: faker.address.city(),
       });
     }
-
   }
   writer.end(() => {
     fsStream.on('finish', () => {
@@ -63,8 +62,8 @@ const writeFavListsToCsv = (fileNum = 1) => {
     });
   });
   return listArray;
-
 };
+
 
 writeFavListsToCsv();
 writeFavRooms(listArray);

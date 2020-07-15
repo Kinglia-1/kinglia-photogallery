@@ -11,7 +11,7 @@
     "seedcqlphotos": "node --max-old-space-size=8192 ./cassandra/seedPhotos.js",
     "seedcqllists": "node --max-old-space-size=8192 ./cassandra/seedFavLists.js",
     "seedsqlphotos": "node --max-old-space-size=8192 ./mysql/rooms_photos.js",
-    "seedlists": "node --max-old-space-size=8192 ./mysql/user_lists.js"
+    "seedsqllists": "node --max-old-space-size=8192 ./mysql/users_lists.js"
   },
   "author": "Jin Park",
   "license": "ISC",

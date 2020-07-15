@@ -33,7 +33,7 @@ function writeTenMillionUsers(writer, encoding, callback) {
       writer.once('drain', write);
     }
   }
-write()
+  write()
 }
 
 writeTenMillionUsers(writeUsers, 'utf-8', () => {
