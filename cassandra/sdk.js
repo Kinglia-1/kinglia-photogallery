@@ -16,5 +16,5 @@ const getPhotos = () => {
       console.log(err);
     });
 };
-console.log(path.parse(process.cwd()).root)
+// console.log(path.parse(process.cwd()).root)
 module.exports = { getPhotos };

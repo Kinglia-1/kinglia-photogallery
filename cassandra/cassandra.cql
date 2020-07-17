@@ -14,8 +14,9 @@ CREATE TABLE photos_by_room (
   photo_url text,
   photo_description text,
   photo_order tinyint,
-  PRIMARY KEY((room_id), photo_id)
-);
+  PRIMARY KEY((room_id), photo_order)
+)
+WITH CLUSTERING ORDER BY (photo_order ASC);
 
 CREATE TABLE favlists_by_users (
   user_id timeuuid,

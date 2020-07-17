@@ -5,7 +5,6 @@ const path = require('path');
 const TimeUuid = require('cassandra-driver').types.TimeUuid;
 const faker = require('faker');
 
-
 const { photosUrls } = require('./photosUrls.js');
 
 const roomRecords = 2000000;
@@ -23,7 +22,7 @@ const randomUrl = () => {
   return photosUrls[random];
 };
 
-const write10MillionPhotos = (start, number, callback) => {
+const writeMassivePhotos = (start, number, callback) => {
   let i = start;
   const stop = start + number;
   let memory = true;
@@ -56,8 +55,7 @@ const write10MillionPhotos = (start, number, callback) => {
   write();
 };
 
-write10MillionPhotos(startIndex, roomRecords, () => {
+writeMassivePhotos(startIndex, roomRecords, () => {
   writePhotos.end();
   console.log('writing photos finished');
 });
-

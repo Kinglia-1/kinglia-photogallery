@@ -7,11 +7,13 @@ const { photosUrls } = require('../cassandra/photosUrls.js');
 
 const roomsFile = path.join(__dirname, '../csv/rooms.csv');
 const writeRooms = fs.createWriteStream('/Volumes/Seagate Backup Plus Drive/SDC_CSV_FILES/rooms.csv');
-writeRooms.write('room_id,room_name\n', 'utf8');
+
+const nRooms = 2000000;
+const startIndex = 8000001;
 
 const photosFile = path.join(__dirname, '../csv/photos.csv');
-const writePhotos = fs.createWriteStream('/Volumes/Seagate Backup Plus Drive/SDC_CSV_FILES/photos.csv');
-writePhotos.write('photo_id,photo_description,photo_url,photo_order,room_id\n');
+const writePhotos = fs.createWriteStream(`/Volumes/Seagate Backup Plus Drive/SDC_CSV_FILES/photos${startIndex}.csv`);
+
 
 const writeMassiveRooms = (start, number, callback) => {
   let i = start;
@@ -26,7 +28,7 @@ const writeMassiveRooms = (start, number, callback) => {
       const room_id = i;
       i += 1;
       const room_name = faker.address.streetName();
-      const string = `${room_id},${room_name}\n`;
+      const string = `0,${room_name}\n`;
       if (i === stop) {
         writeRooms.write(string, 'utf8', callback);
       } else {
@@ -50,9 +52,9 @@ const writeMassivePhotos = (start, number, callback) => {
   let i = start;
   const stop = start + number;
   let memory = true;
+  let photoId = 0;
   const write = () => {
     memory = true;
-    let photoId = 0;
     while (memory && i < stop) {
       if (i % (number / 10) === 0) {
         console.log('wrote 1/10 of file');
@@ -61,12 +63,11 @@ const writeMassivePhotos = (start, number, callback) => {
       i += 1;
       const randomNPhotos = Math.floor(Math.random() * (8 - 6)) + 5;
       for (let k = 0; k < randomNPhotos; k++) {
-        const photo_id = photoId;
         photoId += 1;
         const photo_description = faker.company.catchPhrase();
         const photo_url = randomUrl();
         const photo_order = k;
-        const string = `${photo_id},${photo_description},${photo_url},${photo_order},${room_id}\n`;
+        const string = `0,${photo_description},${photo_url},${photo_order},${room_id}\n`;
         if (i === stop) {
           writePhotos.write(string, 'utf8', callback);
         } else {
@@ -81,12 +82,14 @@ const writeMassivePhotos = (start, number, callback) => {
   write();
 };
 
-writeMassiveRooms(1, 10000000, () => {
-  writeRooms.end();
-  console.log('writing rooms finished');
-});
-
-// writeMassivePhotos(1, 1000000, () => {
-//   writePhotos.end();
-//   console.log('writing photos finished');
+// writeMassiveRooms(0, 10000001, () => {
+//   writeRooms.end();
+//   console.log('writing rooms finished');
 // });
+
+
+writePhotos.write('photo_id,photo_description,photo_url,photo_order,room_id\n');
+writeMassivePhotos(startIndex, nRooms, () => {
+  writePhotos.end();
+  console.log('writing photos finished');
+});

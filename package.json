@@ -54,14 +54,12 @@
     "faker": "^4.1.0",
     "jquery": "^3.5.1",
     "mongoose": "^5.9.22",
-    "node-time-uuid": "^0.1.5",
+    "mysql": "^2.18.1",
     "path": "^0.12.7",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "uuid": "^8.2.0"
+    "react-dom": "^16.13.1"
   },
   "eslintConfig": {
-    "root": true,
     "extends": "airbnb",
     "env": {
       "es6": true,

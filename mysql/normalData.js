@@ -40,6 +40,5 @@ const generateRoomsData = (photosData) => {
 };
 const photosData = generatePhotosData(photosUrls);
 const roomsData = generateRoomsData(photosData);
-// console.log(roomsData);
 
 module.exports = { roomsData, roomRecords };

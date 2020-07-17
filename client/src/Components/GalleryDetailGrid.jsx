@@ -31,7 +31,7 @@ class GalleryDetailGrid extends React.Component {
           <button className={styles.gallerydetailgridBackBtn} type="submit" onClick={this.onPrevClick}><SVG src={Prev} /></button>
         </div>
         <div className={styles.gallerydetailgridContainer}>
-          {photos.room_photos.map((item, index) => <GalleryDetailGridItem photo={item} key={index} photoIdx={index} getClickedPhotoIdxfromGrid={getClickedPhotoIdxfromGrid} />)}
+          {photos.map((item, index) => <GalleryDetailGridItem photo={item} key={index} photoIdx={index} getClickedPhotoIdxfromGrid={getClickedPhotoIdxfromGrid} />)}
         </div>
       </div>
     );
