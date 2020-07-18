@@ -43,7 +43,7 @@ class App extends React.Component {
     window.addEventListener('resize', this.changeViewOnWindowSize);
     window.addEventListener('resize', this.changeMainViewOnWindowSize);
     // const id = window.location.pathname.split('/')[2];
-    this.getRoomPhotos(50);
+    this.getRoomPhotos(9999998);
   }
 
   onShowAll() {

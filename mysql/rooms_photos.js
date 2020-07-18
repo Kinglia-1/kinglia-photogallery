@@ -87,7 +87,6 @@ const writeMassivePhotos = (start, number, callback) => {
 //   console.log('writing rooms finished');
 // });
 
-
 writePhotos.write('photo_id,photo_description,photo_url,photo_order,room_id\n');
 writeMassivePhotos(startIndex, nRooms, () => {
   writePhotos.end();

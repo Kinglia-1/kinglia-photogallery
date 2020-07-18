@@ -23,5 +23,4 @@ const getPhotosByRoomId = (roomId, callback) => {
   });
 };
 
-
 module.exports = { getPhotosByRoomId };

@@ -8,7 +8,7 @@ function getPhotosSqL(req, res) {
       console.log(err);
       res.send(err);
     }
-    console.log(data);
+    // console.log(data);
     for (let i = 0; i < data.length; i++) {
       data[i].photoUrl = data[i].photo_url;
       delete data[i].photo_url;
@@ -26,7 +26,7 @@ function getPhotos(req, res) {
       console.log(err);
       res.status(400).send(err);
     } else {
-      console.log(data);
+      // console.log(data);
       res.status(200).send(data);
     }
   });

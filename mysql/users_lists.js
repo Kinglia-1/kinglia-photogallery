@@ -17,7 +17,6 @@ const writeFavRooms = fs.createWriteStream(favRoomFile);
 writeFavRooms.write('fav_room_id,list_id,room_id\n', 'utf8');
 
 const listsArray = [];
-let listsLoaded = false;
 
 const writeMassiveUser = (start, number, callback) => {
   let i = start;
