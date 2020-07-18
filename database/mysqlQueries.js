@@ -1,26 +1,17 @@
-const pool = require('./mysql');
-
+const coonection = require('./mysql');
+// require('events').EventEmitter.defaultMaxListeners = 100;
 
 const getPhotosByRoomId = (roomId, callback) => {
-  pool.getConnection((err, connection) => {
+
+
+  coonection.query('select photo_url, photo_description from photos where room_id = ?', roomId, (err, results, fields) => {
     if (err) {
       console.log(err);
-      return;
+    } else {
+      callback(null, results);
     }
-
-    connection.query('select photo_url, photo_description from photos where room_id = ?',roomId, (err, results, fields) => {
-      connection.release();
-      if (err) {
-        console.log(err);
-      } else {
-        callback(null, results);
-        connection.destroy();
-      }
-    });
-    connection.on('error', (err) => {
-      console.log(err);
-    });
   });
+
 };
 
 module.exports = { getPhotosByRoomId };

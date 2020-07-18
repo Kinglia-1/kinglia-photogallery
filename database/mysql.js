@@ -1,9 +1,8 @@
 const mysql = require('mysql');
 const { config } = require('../config.js');
+require('events').EventEmitter.defaultMaxListeners = 100;
 
-
-const pool = mysql.createPool({
-  connectionLimit: 2,
+const connection = mysql.createConnection({
   host: 'localhost',
   user: 'root',
   password: config.mysqlpass,
@@ -11,4 +10,4 @@ const pool = mysql.createPool({
 });
 
 
-module.exports = pool;
+module.exports = connection;
