@@ -5,16 +5,17 @@ const { getPhotosByRoomId } = require('../database/mysqlQueries.js');
 
 function getPhotosSqL(req, res) {
   const id = req.params.roomId;
-  connection.queryAsync('START TRANSACTION READ ONLY;select photo_url, photo_description from photos where room_id = ?', id)
+  connection.promise().query('START TRANSACTION READ ONLY;select photo_url, photo_description from photos where room_id = ?', id)
   .then((data) => {
-    const len = data.length;
+    const newdata = data[0][1];
+    const len = newdata.length;
     for (let i = 0; i < len; i++) {
-      data[i].photoUrl = data[i].photo_url;
-      delete data[i].photo_url;
-      data[i].photoDescription = data[i].photo_description;
-      delete data[i].photo_description;
+      newdata[i].photoUrl = newdata[i].photo_url;
+      delete newdata[i].photo_url;
+      newdata[i].photoDescription = newdata[i].photo_description;
+      delete newdata[i].photo_description;
     }
-    return data[1];
+    return newdata;
   })
   .then((data) => {
     res.send(data);
@@ -22,23 +23,6 @@ function getPhotosSqL(req, res) {
   .catch((err) => {
     res.send(err);
   });
-
-
-  // const { roomId } = req.params;
-  // getPhotosByRoomId(roomId, (err, data) => {
-  //   if (err) {
-  //     console.log(err);
-  //     res.send(err);
-  //   }
-  //   // console.log(data);
-  //   for (let i = 0; i < data.length; i++) {
-  //     data[i].photoUrl = data[i].photo_url;
-  //     delete data[i].photo_url;
-  //     data[i].photoDescription = data[i].photo_description;
-  //     delete data[i].photo_description;
-  //   }
-  //   res.send(data);
-  // });
 }
 
 function getPhotos(req, res) {
