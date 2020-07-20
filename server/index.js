@@ -7,9 +7,8 @@ const path = require('path');
 const cors = require('cors');
 
 const {
-  getPhotosSqL, getPhotos, postSaveToList, updateSaveToList, deleteItem,
+  getPhotosSql, getPhotos, postSaveToList, updateSaveToList, deleteItem,
 } = require('./Controllers.js');
-
 
 if (cluster.isMaster) {
   for (let i = 0; i < numCPUs; i++) {
@@ -27,11 +26,9 @@ if (cluster.isMaster) {
   app.use(express.json());
   app.use('/', express.static(path.join(__dirname, '../client/dist')));
 
-  app.get('/api/rooms/:roomId/photos', getPhotosSqL)
+  app.get('/api/rooms/:roomId/photos', getPhotosSql);
 
-  app.post('/api/rooms/:roomId/save', (req, res) => {
-    console.log('data received', req.body)
-  })
+  app.post('/api/rooms/:roomId/save', postSaveSql);
 
   app.route('/api/:roomId/photogallery')
   .get(getPhotos)

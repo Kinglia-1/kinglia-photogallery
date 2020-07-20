@@ -1,11 +1,3 @@
-/* eslint-disable no-underscore-dangle */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable react/self-closing-comp */
-/* eslint-disable jsx-a11y/control-has-associated-label */
-/* eslint-disable react/prop-types */
-/* eslint-disable import/no-extraneous-dependencies */
-
 import React from 'react';
 import SVG from 'react-inlinesvg';
 import LikeIcon from './airbnb-save-heart.svg';
