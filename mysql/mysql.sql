@@ -4,11 +4,11 @@ CREATE DATABASE IF NOT EXISTS bnbphotos;
 
 USE bnbphotos;
 
-CREATE TABLE users (
-  user_id INT UNSIGNED AUTO_INCREMENT NOT NULL,
-  user_name VARCHAR(200),
-  PRIMARY KEY (user_id)
-);
+-- CREATE TABLE users (
+--   user_id INT UNSIGNED AUTO_INCREMENT NOT NULL,
+--   user_name VARCHAR(200),
+--   PRIMARY KEY (user_id)
+-- );
 
 CREATE TABLE rooms (
   room_id INT AUTO_INCREMENT NOT NULL,
@@ -16,27 +16,27 @@ CREATE TABLE rooms (
   PRIMARY KEY(room_id)
 );
 
-CREATE TABLE fav_lists (
-  list_id INT AUTO_INCREMENT NOT NULL,
-  list_name VARCHAR(40) NOT NULL,
-  user_id INT UNSIGNED NOT NULL,
-  FOREIGN KEY (user_id) REFERENCES users(user_id)
-    ON UPDATE CASCADE
-    ON DELETE CASCADE,
-  PRIMARY KEY (list_id)
-);
+-- CREATE TABLE fav_lists (
+--   list_id INT AUTO_INCREMENT NOT NULL,
+--   list_name VARCHAR(40) NOT NULL,
+--   user_id INT UNSIGNED NOT NULL,
+--   FOREIGN KEY (user_id) REFERENCES users(user_id)
+--     ON UPDATE CASCADE
+--     ON DELETE CASCADE,
+--   PRIMARY KEY (list_id)
+-- );
 
-CREATE TABLE fav_rooms (
-  fav_room_id INT AUTO_INCREMENT NOT NULL,
-  list_id INT NOT NULL,
-  room_id INT NOT NULL,
-  FOREIGN KEY (list_id) REFERENCES fav_lists(list_id)
-    ON DELETE CASCADE,
-  FOREIGN KEY (room_id) REFERENCES rooms(room_id)
-    ON UPDATE CASCADE
-    ON DELETE CASCADE,
-  PRIMARY KEY (fav_room_id)
-);
+-- CREATE TABLE fav_rooms (
+--   fav_room_id INT AUTO_INCREMENT NOT NULL,
+--   list_id INT NOT NULL,
+--   room_id INT NOT NULL,
+--   FOREIGN KEY (list_id) REFERENCES fav_lists(list_id)
+--     ON DELETE CASCADE,
+--   FOREIGN KEY (room_id) REFERENCES rooms(room_id)
+--     ON UPDATE CASCADE
+--     ON DELETE CASCADE,
+--   PRIMARY KEY (fav_room_id)
+-- );
 
 CREATE TABLE photos (
   photo_id INT UNSIGNED AUTO_INCREMENT NOT NULL,
@@ -48,3 +48,13 @@ CREATE TABLE photos (
    FOREIGN KEY (room_id) REFERENCES rooms(room_id)
 );
 
+CREATE TABLE save_status (
+  status_id INT AUTO_INCREMENT NOT NULL,
+  list_name VARCHAR(30) NOT NULL,
+  fav_status BOOLEAN NOT NULL,
+  room_id INT NOT NULL,
+  FOREIGN KEY (room_id) REFERENCES rooms(room_id)
+    ON UPDATE CASCADE
+    ON DELETE CASCADE,
+    PRIMARY KEY (status_id)
+);

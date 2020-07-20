@@ -6,23 +6,28 @@ export const requests = new Counter('http_reqs');
 
 export const options = {
   stages: [
-    { target: 600, duration: '1s' },
-    { target: 1000, duration: '1s' },
-    { target: 2000, duration: '1s' },
-    { target: 3000, duration: '1s' },
-    { target: 3100, duration: '1s' },
-    { target: 3100, duration: '30s' },
+    { target: 350, duration: '10s' },
+    { target: 350, duration: '1m' },
+    // { target: 250, duration: '10s' },
+    // { target: 250, duration: '1m' },
+    // { target: 300, duration: '10s' },
+    // { target: 300, duration: '1m' },
+    // { target: 500, duration: '10s' },
+    // { target: 500, duration: '30s' },
 
   ],
   thresholds: {
     errors: ['rate<0.01'],
-    'failed requests': ['rate<0.1'],
+    'failed requests': ['rate<0.01'],
+    'http_req_duration': ['p(95)<200'],
   },
 };
 
 export default function () {
   // const id = Math.floor(Math.random() * 9999999) + 1;
-  const url = 'http://localhost:3003/api/rooms/9000000/photos';
+  // for (let i = 0; i < 10; i++) {
+  const url = 'http://localhost:3003/api/rooms/9000001/photos';
   http.get(url);
+  // }
   sleep(1);
 }

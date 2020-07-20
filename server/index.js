@@ -15,27 +15,30 @@ if (cluster.isMaster) {
   for (let i = 0; i < numCPUs; i++) {
     cluster.fork();
   }
-  // cluster.on('exit', (worker, code, signal) => {
-  //   console.log('Worker %d died with code/signal %s. Restarting worker...', worker.process.pid, signal || code);
-  //   cluster.fork();
-  // });
+  cluster.on('exit', (worker, code, signal) => {
+    console.log('Worker %d died with code/signal %s. Restarting worker...', worker.process.pid, signal || code);
+    cluster.fork();
+  });
 } else {
   const app = express();
 
   const port = 3003;
   app.use(cors());
-  app.use(bodyParser.json());
+  app.use(express.json());
   app.use('/', express.static(path.join(__dirname, '../client/dist')));
 
-  app.route('/api/rooms/:roomId/photos')
-    .get(getPhotosSqL)
-    .post(postSaveToList)
-    .put(updateSaveToList)
-    .delete(deleteItem);
+  app.get('/api/rooms/:roomId/photos', getPhotosSqL)
 
-  app.get('/api/:roomId/photogallery', (req, res) => {
-    getPhotos(req, res);
-  });
+  app.post('/api/rooms/:roomId/save', (req, res) => {
+    console.log('data received', req.body)
+  })
+
+  app.route('/api/:roomId/photogallery')
+  .get(getPhotos)
+  .post(postSaveToList)
+  .put(updateSaveToList)
+  .delete(deleteItem);
+
 
   app.listen(port, () => console.log(`listening at http://localhost:${port}`));
 }

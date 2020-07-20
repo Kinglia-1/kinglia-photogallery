@@ -1,0 +1,718 @@
+{
+	"RunDate": "2020-07-18T22:44:56.912511-07:00",
+	"NRDiagVersion": "1.10.30",
+	"Configuration": {
+		"Verbose": false,
+		"Quiet": false,
+		"VeryQuiet": false,
+		"YesToAll": false,
+		"ShowOverrideHelp": false,
+		"ProxySpecified": false,
+		"SkipVersionCheck": false,
+		"Tasks": "",
+		"AttachmentKey": "",
+		"ConfigFile": "",
+		"Override": "",
+		"OutputPath": "./",
+		"Filter": "success,warning,failure,error,info",
+		"BrowserURL": "",
+		"Suites": "node"
+	},
+	"Results": [
+		{
+			"Identifier": {
+				"Category": "Base",
+				"Subcategory": "Env",
+				"Name": "CollectEnvVars"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "Info",
+				"Summary": "Gathered Environment variables of current shell.",
+				"URL": "",
+				"FilesToCopy": null,
+				"Payload": {
+					"HOME": "/Users/eric",
+					"PATH": "/Users/eric/.yarn/bin:/Users/eric/.config/yarn/global/node_modules/.bin:/Users/eric/.nvm/versions/node/v12.18.0/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/MacGPG2/bin:/opt/X11/bin"
+				}
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "Base",
+				"Subcategory": "Config",
+				"Name": "Collect"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "Success",
+				"Summary": "There were 1 config file(s) found",
+				"URL": "",
+				"FilesToCopy": [
+					{
+						"Path": "/Users/eric/documents/hackr/hrsf128/kinglia-photogallery/server/newrelic.js",
+						"Name": "./newrelic.js",
+						"StoredName": "newrelic.js",
+						"Streamed": false,
+						"Identifier": ""
+					}
+				],
+				"Payload": [
+					{
+						"FileName": "newrelic.js",
+						"FilePath": "/Users/eric/documents/hackr/hrsf128/kinglia-photogallery/server/"
+					}
+				]
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "Base",
+				"Subcategory": "Config",
+				"Name": "Validate"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "Success",
+				"Summary": "Successfully parsed config file(s) - See json for full detail",
+				"URL": "",
+				"FilesToCopy": null,
+				"Payload": [
+					{
+						"FileName": "newrelic.js",
+						"FilePath": "/Users/eric/documents/hackr/hrsf128/kinglia-photogallery/server/",
+						"Status": "Success",
+						"Error": ""
+					}
+				]
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "Base",
+				"Subcategory": "Config",
+				"Name": "ProxyDetect"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "None",
+				"Summary": "",
+				"URL": "",
+				"FilesToCopy": null,
+				"Payload": null
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "Base",
+				"Subcategory": "Config",
+				"Name": "LicenseKey"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "Success",
+				"Summary": "1 unique New Relic license key(s) found.",
+				"URL": "",
+				"FilesToCopy": null,
+				"Payload": [
+					{
+						"Value": "config.newRelicPass",
+						"Source": "/Users/eric/documents/hackr/hrsf128/kinglia-photogallery/server/newrelic.js"
+					}
+				]
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "Base",
+				"Subcategory": "Containers",
+				"Name": "DetectDocker"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "None",
+				"Summary": "Can't determine if Docker Daemon is running on host: unexpected output",
+				"URL": "",
+				"FilesToCopy": [
+					{
+						"Path": "docker-info.json",
+						"Name": "Base/Containers/docker-info.json",
+						"Streamed": true
+					}
+				],
+				"Payload": {
+					"Driver": "",
+					"ServerVersion": "",
+					"MemTotal": 0,
+					"NCPU": 0
+				}
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "Base",
+				"Subcategory": "Env",
+				"Name": "DetectAzure"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "None",
+				"Summary": "Detected that this is not an Azure environment.",
+				"URL": "",
+				"FilesToCopy": null,
+				"Payload": null
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "Base",
+				"Subcategory": "Config",
+				"Name": "ValidateLicenseKey"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "Failure",
+				"Summary": "We validated 1 license key(s):\nThe license key found in\n /Users/eric/documents/hackr/hrsf128/kinglia-photogallery/server/newrelic.js \ndoes not have a valid format: config.newRelicPass. \nThe NR license key is 40 alphanumeric characters. \nReview this documentation to make sure that you have the proper format of a New Relic Personal API key: \nhttps://docs.newrelic.com/docs/apis/get-started/intro-apis/types-new-relic-api-keys\n\n",
+				"URL": "",
+				"FilesToCopy": null,
+				"Payload": null
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "Base",
+				"Subcategory": "Config",
+				"Name": "RegionDetect"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "None",
+				"Summary": "No New Relic license keys found -- unable to detect datacenter region.",
+				"URL": "",
+				"FilesToCopy": null,
+				"Payload": null
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "Base",
+				"Subcategory": "Collector",
+				"Name": "ConnectUS"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "Success",
+				"Summary": "Status Code = 200 Body = mongrel ==\u003e up\n",
+				"URL": "",
+				"FilesToCopy": null,
+				"Payload": null
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "Base",
+				"Subcategory": "Env",
+				"Name": "HostInfo"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "Info",
+				"Summary": "Collected host information",
+				"URL": "",
+				"FilesToCopy": null,
+				"Payload": {
+					"Hostname": "Macintosh.local",
+					"OS": "darwin",
+					"Platform": "darwin",
+					"PlatformFamily": "Standalone Workstation",
+					"PlatformVersion": "10.15.5",
+					"KernelVersion": "19.5.0",
+					"KernelArch": "x86_64",
+					"CPUs": [
+						{
+							"Cores": 2,
+							"Mhz": 2600
+						}
+					],
+					"TotalVirtualMemoryMB": 8192
+				}
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "Base",
+				"Subcategory": "Log",
+				"Name": "Copy"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "Success",
+				"Summary": "We found at least one recent New Relic log file (modified less than 7 days ago): /Users/eric/documents/hackr/hrsf128/kinglia-photogallery/newrelic_agent.log\n",
+				"URL": "",
+				"FilesToCopy": [
+					{
+						"Path": "/Users/eric/documents/hackr/hrsf128/kinglia-photogallery/newrelic_agent.log",
+						"Name": "Base/Log/newrelic_agent.log",
+						"Streamed": false
+					}
+				],
+				"Payload": [
+					{
+						"FileName": "newrelic_agent.log",
+						"FilePath": "/Users/eric/documents/hackr/hrsf128/kinglia-photogallery/"
+					}
+				]
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "Base",
+				"Subcategory": "Log",
+				"Name": "ReportingTo"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "Success",
+				"Summary": "Found a reporting to.",
+				"URL": "",
+				"FilesToCopy": null,
+				"Payload": [
+					{
+						"Logfile": "/Users/eric/documents/hackr/hrsf128/kinglia-photogallery/newrelic_agent.log",
+						"ReportingTo": [
+							"https://rpm.newrelic.com/accounts/2800746/applications/677998760"
+						]
+					}
+				]
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "Node",
+				"Subcategory": "Config",
+				"Name": "Agent"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "Success",
+				"Summary": "Node agent identified as present on system",
+				"URL": "",
+				"FilesToCopy": null,
+				"Payload": [
+					{
+						"FileName": "newrelic.js",
+						"FilePath": "/Users/eric/documents/hackr/hrsf128/kinglia-photogallery/server/",
+						"Status": "Success",
+						"Error": ""
+					}
+				]
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "Node",
+				"Subcategory": "Agent",
+				"Name": "Version"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "Info",
+				"Summary": "6.11.0",
+				"URL": "",
+				"FilesToCopy": null,
+				"Payload": "6.11.0"
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "Base",
+				"Subcategory": "Agent",
+				"Name": "EOL"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "Success",
+				"Summary": "We detected 1 New Relic agent(s) running on your system:\n1 New Relic agent(s) whose version is within the scope of support",
+				"URL": "https://discuss.newrelic.com/t/important-upcoming-changes-to-supported-agent-versions/72280",
+				"FilesToCopy": null,
+				"Payload": null
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "Base",
+				"Subcategory": "Collector",
+				"Name": "ConnectEU"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "Success",
+				"Summary": "Status Code = 200 Body = mongrel ==\u003e up\n",
+				"URL": "",
+				"FilesToCopy": null,
+				"Payload": null
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "Base",
+				"Subcategory": "Env",
+				"Name": "InitSystem"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "None",
+				"Summary": "Task does not apply to Mac OS",
+				"URL": "",
+				"FilesToCopy": null,
+				"Payload": null
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "Base",
+				"Subcategory": "Config",
+				"Name": "AppName"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "Success",
+				"Summary": "1 unique application name(s) found.",
+				"URL": "",
+				"FilesToCopy": null,
+				"Payload": [
+					{
+						"Name": "Kinglia-photogallery",
+						"FilePath": "/Users/eric/documents/hackr/hrsf128/kinglia-photogallery/server/newrelic.js"
+					}
+				]
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "Base",
+				"Subcategory": "Env",
+				"Name": "DetectAWS"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "None",
+				"Summary": "AWS metadata endpoint timeout",
+				"URL": "",
+				"FilesToCopy": null,
+				"Payload": null
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "Base",
+				"Subcategory": "Config",
+				"Name": "ValidateHSM"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "None",
+				"Summary": "No validated license keys to check high security mode against. Task did not run.",
+				"URL": "",
+				"FilesToCopy": null,
+				"Payload": null
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "Node",
+				"Subcategory": "Env",
+				"Name": "Version"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "Info",
+				"Summary": "v12.18.0\n",
+				"URL": "",
+				"FilesToCopy": null,
+				"Payload": {
+					"Major": 12,
+					"Minor": 18,
+					"Patch": 0,
+					"Build": 0
+				}
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "Node",
+				"Subcategory": "Env",
+				"Name": "NpmVersion"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "Info",
+				"Summary": "6.14.5",
+				"URL": "",
+				"FilesToCopy": null,
+				"Payload": null
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "Node",
+				"Subcategory": "Env",
+				"Name": "NpmPackage"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "Success",
+				"Summary": "We have succesfully retrieved the following file(s):\npackage.json\npackage-lock.json",
+				"URL": "",
+				"FilesToCopy": [
+					{
+						"Path": "/Users/eric/documents/hackr/hrsf128/kinglia-photogallery/package.json",
+						"Name": "./package.json",
+						"StoredName": "package.json",
+						"Streamed": false,
+						"Identifier": ""
+					},
+					{
+						"Path": "/Users/eric/documents/hackr/hrsf128/kinglia-photogallery/package-lock.json",
+						"Name": "./package-lock.json",
+						"StoredName": "package-lock.json",
+						"Streamed": false,
+						"Identifier": ""
+					}
+				],
+				"Payload": [
+					{
+						"FileName": "package.json",
+						"FilePath": "/Users/eric/documents/hackr/hrsf128/kinglia-photogallery/"
+					},
+					{
+						"FileName": "package-lock.json",
+						"FilePath": "/Users/eric/documents/hackr/hrsf128/kinglia-photogallery/"
+					}
+				]
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "Node",
+				"Subcategory": "Env",
+				"Name": "VersionCompatibility"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "Success",
+				"Summary": "Your current Node.js version, 12.18.0.0, is compatible with New Relic's Node.js agent",
+				"URL": "",
+				"FilesToCopy": null,
+				"Payload": null
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "Node",
+				"Subcategory": "Env",
+				"Name": "Dependencies"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "Info",
+				"Summary": "We have successfully retrieved a list of dependencies from your node_modules folder",
+				"URL": "",
+				"FilesToCopy": [
+					{
+						"Path": "npm_ls_output.txt",
+						"Name": "./npm_ls_output.txt",
+						"StoredName": "npm_ls_output.txt",
+						"Streamed": true,
+						"Identifier": ""
+					}
+				],
+				"Payload": [
+					{
+						"Module": "PhotoGallery",
+						"Version": "1.0.0"
+					},
+					{
+						"Module": "@babel/cli",
+						"Version": "7.10.4"
+					},
+					{
+						"Module": "@babel/core",
+						"Version": "7.10.4"
+					},
+					{
+						"Module": "@babel/plugin-transform-runtime",
+						"Version": "7.10.4"
+					},
+					{
+						"Module": "@babel/preset-env",
+						"Version": "7.10.4"
+					},
+					{
+						"Module": "@babel/preset-react",
+						"Version": "7.10.4"
+					},
+					{
+						"Module": "@babel/runtime",
+						"Version": "7.10.4"
+					},
+					{
+						"Module": "aws-sdk",
+						"Version": "2.713.0"
+					},
+					{
+						"Module": "axios",
+						"Version": "0.19.2"
+					},
+					{
+						"Module": "babel-eslint",
+						"Version": "10.1.0"
+					},
+					{
+						"Module": "babel-jest",
+						"Version": "26.1.0"
+					},
+					{
+						"Module": "babel-loader",
+						"Version": "8.1.0"
+					},
+					{
+						"Module": "babel-plugin-transform-export-extensions",
+						"Version": "6.22.0"
+					},
+					{
+						"Module": "body-parser",
+						"Version": "1.19.0"
+					},
+					{
+						"Module": "cassandra-driver",
+						"Version": "4.5.2"
+					},
+					{
+						"Module": "cors",
+						"Version": "2.8.5"
+					},
+					{
+						"Module": "css-loader",
+						"Version": "3.6.0"
+					},
+					{
+						"Module": "csv-write-stream",
+						"Version": "2.0.0"
+					},
+					{
+						"Module": "dayjs",
+						"Version": "1.8.29"
+					},
+					{
+						"Module": "enzyme",
+						"Version": "3.11.0"
+					},
+					{
+						"Module": "enzyme-adapter-react-16",
+						"Version": "1.15.2"
+					},
+					{
+						"Module": "eslint",
+						"Version": "7.4.0"
+					},
+					{
+						"Module": "eslint-config-airbnb",
+						"Version": "18.2.0"
+					},
+					{
+						"Module": "eslint-plugin-import",
+						"Version": "2.22.0"
+					},
+					{
+						"Module": "eslint-plugin-jsx-a11y",
+						"Version": "6.3.1"
+					},
+					{
+						"Module": "eslint-plugin-react",
+						"Version": "7.20.3"
+					},
+					{
+						"Module": "eslint-plugin-react-hooks",
+						"Version": "4.0.6"
+					},
+					{
+						"Module": "express",
+						"Version": "4.17.1"
+					},
+					{
+						"Module": "faker",
+						"Version": "4.1.0"
+					},
+					{
+						"Module": "jest",
+						"Version": "26.1.0"
+					},
+					{
+						"Module": "jquery",
+						"Version": "3.5.1"
+					},
+					{
+						"Module": "mongoose",
+						"Version": "5.9.22"
+					},
+					{
+						"Module": "mysql",
+						"Version": "2.18.1"
+					},
+					{
+						"Module": "newrelic",
+						"Version": "6.11.0"
+					},
+					{
+						"Module": "path",
+						"Version": "0.12.7"
+					},
+					{
+						"Module": "react",
+						"Version": "16.13.1"
+					},
+					{
+						"Module": "react-dom",
+						"Version": "16.13.1"
+					},
+					{
+						"Module": "react-inlinesvg",
+						"Version": "2.0.0"
+					},
+					{
+						"Module": "react-svg-loader",
+						"Version": "3.0.3"
+					},
+					{
+						"Module": "style-loader",
+						"Version": "1.2.1"
+					},
+					{
+						"Module": "svg-inline-loader",
+						"Version": "0.8.2"
+					},
+					{
+						"Module": "webpack",
+						"Version": "4.43.0"
+					}
+				]
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "Node",
+				"Subcategory": "Requirements",
+				"Name": "ProblematicModules"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "Warning",
+				"Summary": "- We noticed that you are using: react, react-dom. If you are looking to monitor a client side app, beware that the Node Agent only monitors server side frameworks. To get metrics for front-end libraries/frameworks use the Browser Agent instead: https://docs.newrelic.com/docs/browser/new-relic-browser/getting-started/compatibility-requirements-new-relic-browser\n- We have detected the following unsupported module(s) in your application: @babel/core, mongoose, webpack. This may cause instrumentation issues and inconsistency of data for the Node Agent.\n- Keep in mind that if you are looking for additional Node.js runtime level statistics, you'll need to install our optional module: @newrelic/native-metrics. For more information: https://docs.newrelic.com/docs/agents/nodejs-agent/supported-features/nodejs-vm-measurements\n",
+				"URL": "https://docs.newrelic.com/docs/agents/nodejs-agent/getting-started/compatibility-requirements-nodejs-agent",
+				"FilesToCopy": null,
+				"Payload": null
+			}
+		}
+	]
+}

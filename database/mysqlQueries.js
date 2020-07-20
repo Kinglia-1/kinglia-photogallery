@@ -1,17 +1,14 @@
-const coonection = require('./mysql');
-// require('events').EventEmitter.defaultMaxListeners = 100;
+// const connection = require('./mysql');
+// // require('events').EventEmitter.defaultMaxListeners = 100;
 
-const getPhotosByRoomId = (roomId, callback) => {
+// const getPhotosByRoomId = (roomId, callback) => {
+//   connection.queryAsync('SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;select photo_url, photo_description from photos where room_id = ?;COMMIT', roomId)
+//   .then((rows) => {
+//     callback(null, rows);
+//   })
+//   .catch((err) => {
+//     callback(err, null);
+//   })
+// };
 
-
-  coonection.query('select photo_url, photo_description from photos where room_id = ?', roomId, (err, results, fields) => {
-    if (err) {
-      console.log(err);
-    } else {
-      callback(null, results);
-    }
-  });
-
-};
-
-module.exports = { getPhotosByRoomId };
+// module.exports = { getPhotosByRoomId };

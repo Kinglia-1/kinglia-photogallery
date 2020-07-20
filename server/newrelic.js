@@ -30,7 +30,7 @@ exports.config = {
      *
      * @env NEW_RELIC_DISTRIBUTED_TRACING_ENABLED
      */
-    enabled: false
+    enabled: true
   },
   logging: {
     /**
@@ -38,7 +38,7 @@ exports.config = {
      * issues with the agent, 'info' and higher will impose the least overhead on
      * production applications.
      */
-    level: 'info'
+    level: 'trace'
   },
   /**
    * When true, all request headers except for those listed in attributes.exclude

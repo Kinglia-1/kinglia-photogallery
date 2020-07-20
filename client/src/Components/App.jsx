@@ -125,33 +125,43 @@ class App extends React.Component {
     });
   }
 
-  saveToList(listname, save) {
-    $.ajax({
-      method: 'POST',
-      url: '/api/51/photogallery',
-      contentType: 'application/json; charset=utf-8',
-      data: JSON.stringify({
-        name: listname,
-        saved: save,
-      }),
-      success: () => {
-        console.log('successfully save to a list ajax');
-        $.ajax({
-          method: 'GET',
-          url: '/api/51/photogallery',
-          success: (data) => {
-            this.setState({ photos: data.room_photos });
-          },
-          error: (err) => {
-            console.log('err on ajax get: ', err);
-          },
-        });
-      },
-      error: (err) => {
-        console.log('err on ajax save to list post: ', err);
-      },
-    });
+  saveToList(listName, save) {
+    axios.post('/api/rooms/:roomId/save', { listName, save })
+    .then((response) => {
+      console.log(response.body)
+    })
+    .catch((err) => {
+      console.log(err)
+    })
   }
+
+  // saveToList(listname, save) {
+  //   $.ajax({
+  //     method: 'POST',
+  //     url: '/api/51/photogallery',
+  //     contentType: 'application/json; charset=utf-8',
+  //     data: JSON.stringify({
+  //       name: listname,
+  //       saved: save,
+  //     }),
+  //     success: () => {
+  //       console.log('successfully save to a list ajax');
+  //       $.ajax({
+  //         method: 'GET',
+  //         url: '/api/51/photogallery',
+  //         success: (data) => {
+  //           this.setState({ photos: data.room_photos });
+  //         },
+  //         error: (err) => {
+  //           console.log('err on ajax get: ', err);
+  //         },
+  //       });
+  //     },
+  //     error: (err) => {
+  //       console.log('err on ajax save to list post: ', err);
+  //     },
+  //   });
+  // }
 
   likeStatusUpdate(listId, listname, likedStatus) {
     $.ajax({
