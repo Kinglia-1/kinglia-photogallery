@@ -49,11 +49,13 @@ const getPhotosSql = (req, res) => {
 
 const getSaveSql = (req, res) => {
   const id = req.params.roomId;
-  connection.promise().execute('select list_name, fav_status from save_status where room_id = ?', [id])
+  connection.promise().execute('select status_id, list_name, fav_status from save_status where room_id = ?', [id])
     .then((data) => {
       const newData = Array.from(data[0]);
       const len = newData.length;
       for (let i = 0; i < len; i++) {
+        newData[i]._id = newData[i].status_id;
+        delete newData[i].status_id;
         newData[i].listName = newData[i].list_name;
         delete newData[i].list_name;
         newData[i].saved = newData[i].fav_status;
@@ -72,7 +74,6 @@ const getSaveSql = (req, res) => {
 const postSaveSql = (req, res) => {
   const { roomId } = req.params;
   const { listName, saved } = req.body;
-  console.log(roomId, listName, saved)
   connection.promise().execute('insert into save_status(list_name, fav_status, room_id) values(?, ?, ?)', [listName, saved, roomId])
     .then((response) => {
       // console.log('POST RESPONSE', response);
@@ -82,6 +83,18 @@ const postSaveSql = (req, res) => {
       res.send(err);
     });
 };
+
+const updateSaveSql = (req, res) => {
+  const { roomId } = req.params;
+  const { _id, saved } = req.body;
+  connection.promise().execute('update save_status set fav_status = ? where room_id = ? and status_id = ?', [saved | 0, roomId, _id])
+    .then((response) => {
+      res.send('LIST UPDATED');
+    })
+    .catch((err) => {
+      res.send(err);
+    });
+}
 
 function getPhotos(req, res) {
   const { roomId } = req.params;
@@ -125,5 +138,5 @@ const deleteItem = (req, res) => {
   console.log('trying to delete');
 };
 module.exports = {
-  getPhotos, postSaveToList, updateSaveToList, deleteItem, getPhotosSql, postSaveSql, getSaveSql
+  getPhotos, postSaveToList, updateSaveToList, deleteItem, getPhotosSql, postSaveSql, getSaveSql, postSaveSql, updateSaveSql
 };

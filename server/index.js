@@ -7,7 +7,7 @@ const path = require('path');
 const cors = require('cors');
 
 const {
-  getPhotosSql, getPhotos, postSaveToList, updateSaveToList, deleteItem, postSaveSql, getSaveSql
+  getPhotosSql, getPhotos, postSaveToList, updateSaveToList, deleteItem, postSaveSql, getSaveSql, updateSaveSql
 } = require('./Controllers.js');
 
 if (cluster.isMaster) {
@@ -32,6 +32,7 @@ if (cluster.isMaster) {
 
   app.post('/api/rooms/:roomId/save', postSaveSql);
 
+  app.put('/api/rooms/:roomId/save', updateSaveSql);
 
   app.route('/api/:roomId/photogallery')
     .get(getPhotos)

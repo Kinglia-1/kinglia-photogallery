@@ -16,13 +16,13 @@ class SavePopupListItem extends React.Component {
   likeIconHandler() {
     const { item } = this.props;
     const { likeStatusUpdate } = this.props;
-    likeStatusUpdate(item._id, item.name, false);
+    likeStatusUpdate(item._id, item.listName, false);
   }
 
   unLikeIconHandler() {
     const { item } = this.props;
     const { likeStatusUpdate } = this.props;
-    likeStatusUpdate(item._id, item.name, true);
+    likeStatusUpdate(item._id, item.listName, true);
   }
 
   render() {

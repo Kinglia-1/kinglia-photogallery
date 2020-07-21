@@ -138,6 +138,7 @@ class App extends React.Component {
     axios.post(`/api/rooms/${id}/save`, { listName : listName, saved: save })
     .then((response) => {
       console.log(response.data)
+      this.getRoomPhotos(id)
     })
     .catch((err) => {
       console.log(err)
@@ -173,7 +174,14 @@ class App extends React.Component {
   // }
   likeStatusUpdate(listId, listname, likedStatus) {
     const id = window.location.pathname.split('/')[2];
-    axios.put()
+    axios.put(`/api/rooms/${id}/save`, {_id: listId, saved: likedStatus})
+      .then((res) => {
+        console.log(res.data)
+        this.getRoomPhotos(id)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
   }
   // likeStatusUpdate(listId, listname, likedStatus) {
   //   $.ajax({
