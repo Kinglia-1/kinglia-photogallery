@@ -27,16 +27,19 @@ const getPhotosSql = (req, res) => {
   const id = req.params.roomId;
   connection.promise().execute('select photo_url, photo_description from photos where room_id = ?', [id])
     .then((data) => {
-      const len = data.length;
+      // console.log('FIRST DATA',data)
+      const newData = Array.from(data[0]);
+      const len = newData.length;
       for (let i = 0; i < len; i++) {
-        data[i].photoUrl = data[i].photo_url;
-        delete data[i].photo_url;
-        data[i].photoDescription = data[i].photo_description;
-        delete data[i].photo_description;
+        newData[i].photoUrl = newData[i].photo_url;
+        delete newData[i].photo_url;
+        newData[i].photoDescription = newData[i].photo_description;
+        delete newData[i].photo_description;
       }
-      return data;
+      return newData;
     })
     .then((data) => {
+      // console.log(data)
       res.send(data);
     })
     .catch((err) => {
@@ -44,8 +47,40 @@ const getPhotosSql = (req, res) => {
     });
 };
 
+const getSaveSql = (req, res) => {
+  const id = req.params.roomId;
+  connection.promise().execute('select list_name, fav_status from save_status where room_id = ?', [id])
+    .then((data) => {
+      const newData = Array.from(data[0]);
+      const len = newData.length;
+      for (let i = 0; i < len; i++) {
+        newData[i].listName = newData[i].list_name;
+        delete newData[i].list_name;
+        newData[i].saved = newData[i].fav_status;
+        delete newData[i].fav_status;
+      }
+      return newData;
+    })
+    .then((data) => {
+      res.send(data);
+    })
+    .catch((err) =>{
+      res.send(err)
+    })
+}
+
 const postSaveSql = (req, res) => {
-  console.log(req.body);
+  const { roomId } = req.params;
+  const { listName, saved } = req.body;
+  console.log(roomId, listName, saved)
+  connection.promise().execute('insert into save_status(list_name, fav_status, room_id) values(?, ?, ?)', [listName, saved, roomId])
+    .then((response) => {
+      // console.log('POST RESPONSE', response);
+      res.send('NEW LIST POSTED');
+    })
+    .catch((err) => {
+      res.send(err);
+    });
 };
 
 function getPhotos(req, res) {
@@ -90,5 +125,5 @@ const deleteItem = (req, res) => {
   console.log('trying to delete');
 };
 module.exports = {
-  getPhotos, postSaveToList, updateSaveToList, deleteItem, getPhotosSql, postSaveSql,
+  getPhotos, postSaveToList, updateSaveToList, deleteItem, getPhotosSql, postSaveSql, getSaveSql
 };

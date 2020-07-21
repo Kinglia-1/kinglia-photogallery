@@ -1,5 +1,3 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
 
 import React from 'react';
 import $ from 'jquery';
@@ -42,8 +40,10 @@ class App extends React.Component {
   componentDidMount() {
     window.addEventListener('resize', this.changeViewOnWindowSize);
     window.addEventListener('resize', this.changeMainViewOnWindowSize);
-    // const id = window.location.pathname.split('/')[2];
-    this.getRoomPhotos(9999998);
+    const id = window.location.pathname.split('/')[2];
+    console.log(id)
+    console.log('didmount')
+    this.getRoomPhotos(id);
   }
 
   onShowAll() {
@@ -64,18 +64,7 @@ class App extends React.Component {
     });
   }
 
-  getRoomPhotos(id) {
-    $.ajax({
-      method: 'GET',
-      url: `/api/rooms/${id}/photos`,
-      success: (data) => {
-        this.setState({ photos: data });
-      },
-      error: (err) => {
-        console.log('err on ajax get: ', err);
-      },
-    });
-  }
+
 
   getClickedPhotoIdx(index) {
     this.setState({ clickedPhotoIdx: index, view: 'showAll' });
@@ -125,10 +114,30 @@ class App extends React.Component {
     });
   }
 
+  getRoomPhotos(id) {
+    const getPhotos = axios.get(`/api/rooms/${id}/photos`);
+    const getSaveStatus = axios.get(`/api/rooms/${id}/save`);
+    axios.all([getPhotos, getSaveStatus])
+      .then(axios.spread((res1, res2) => {
+        const photosArr = res1.data;
+        const saveArr = res2.data;
+        const data = {};
+        data.roomPhotos = photosArr;
+        data.save_status = saveArr;
+        console.log('my photos before set state', data)
+        this.setState({ photos: data });
+      }))
+      .catch((err) => {
+        console.log(err);
+      })
+  }
+
+
   saveToList(listName, save) {
-    axios.post('/api/rooms/:roomId/save', { listName, save })
+    const id = window.location.pathname.split('/')[2];
+    axios.post(`/api/rooms/${id}/save`, { listName : listName, saved: save })
     .then((response) => {
-      console.log(response.body)
+      console.log(response.data)
     })
     .catch((err) => {
       console.log(err)
@@ -162,35 +171,38 @@ class App extends React.Component {
   //     },
   //   });
   // }
-
   likeStatusUpdate(listId, listname, likedStatus) {
-    $.ajax({
-      method: 'PUT',
-      url: '/api/51/photogallery',
-      contentType: 'application/json; charset=utf-8',
-      data: JSON.stringify({
-        id: listId,
-        name: listname,
-        saved: likedStatus,
-      }),
-      success: () => {
-        console.log('successfully updated save list ajax');
-        $.ajax({
-          method: 'GET',
-          url: '/api/51/photogallery',
-          success: (data) => {
-            this.setState({ photos: data });
-          },
-          error: (err) => {
-            console.log('err on ajax get: ', err);
-          },
-        });
-      },
-      error: (err) => {
-        console.log('err on ajax update save list: ', err);
-      },
-    });
+    const id = window.location.pathname.split('/')[2];
+    axios.put()
   }
+  // likeStatusUpdate(listId, listname, likedStatus) {
+  //   $.ajax({
+  //     method: 'PUT',
+  //     url: '/api/51/photogallery',
+  //     contentType: 'application/json; charset=utf-8',
+  //     data: JSON.stringify({
+  //       id: listId,
+  //       name: listname,
+  //       saved: likedStatus,
+  //     }),
+  //     success: () => {
+  //       console.log('successfully updated save list ajax');
+  //       $.ajax({
+  //         method: 'GET',
+  //         url: '/api/51/photogallery',
+  //         success: (data) => {
+  //           this.setState({ photos: data });
+  //         },
+  //         error: (err) => {
+  //           console.log('err on ajax get: ', err);
+  //         },
+  //       });
+  //     },
+  //     error: (err) => {
+  //       console.log('err on ajax update save list: ', err);
+  //     },
+  //   });
+  // }
 
   renderView() {
     const {

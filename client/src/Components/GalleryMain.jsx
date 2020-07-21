@@ -50,35 +50,35 @@ class GalleryMain extends React.Component {
         <div className={`${styles.galleryContainer} ${styles.w2} ${styles.h2}`}>
           <div className={styles.galleryItem}>
             <div className={styles.image}>
-              <img onClick={this.photoClickHandlerA} src={this.props.photos[0].photoUrl} />
+              <img onClick={this.photoClickHandlerA} src={this.props.photos.roomPhotos[0].photoUrl} />
             </div>
           </div>
         </div>
         <div className={styles.galleryContainer}>
           <div className={styles.galleryItem}>
             <div className={styles.image}>
-              <img onClick={this.photoClickHandlerB} src={this.props.photos[1].photoUrl} />
+              <img onClick={this.photoClickHandlerB} src={this.props.photos.roomPhotos[1].photoUrl} />
             </div>
           </div>
         </div>
         <div className={styles.galleryContainer}>
           <div className={styles.galleryItem}>
             <div className={styles.image}>
-              <img onClick={this.photoClickHandlerC} src={this.props.photos[2].photoUrl} />
+              <img onClick={this.photoClickHandlerC} src={this.props.photos.roomPhotos[2].photoUrl} />
             </div>
           </div>
         </div>
         <div className={styles.galleryContainer}>
           <div className={styles.galleryItem}>
             <div className={styles.image}>
-              <img onClick={this.photoClickHandlerD} src={this.props.photos[3].photoUrl} />
+              <img onClick={this.photoClickHandlerD} src={this.props.photos.roomPhotos[3].photoUrl} />
             </div>
           </div>
         </div>
         <div className={styles.galleryContainer}>
           <div className={styles.galleryItem}>
             <div className={styles.image}>
-              <img onClick={this.photoClickHandlerE} src={this.props.photos[4].photoUrl} />
+              <img onClick={this.photoClickHandlerE} src={this.props.photos.roomPhotos[4].photoUrl} />
             </div>
           </div>
           <button className={styles.showAllBtn} type="submit" onClick={this.onClickHandler}>

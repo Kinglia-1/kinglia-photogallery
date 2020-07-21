@@ -19,7 +19,7 @@ export const options = {
   thresholds: {
     errors: ['rate<0.01'],
     'failed requests': ['rate<0.01'],
-    'http_req_duration': ['p(95)<200'],
+    http_req_duration: ['p(95)<200'],
   },
 };
 

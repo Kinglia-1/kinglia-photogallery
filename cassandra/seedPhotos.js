@@ -9,12 +9,11 @@ const { photosUrls } = require('./photosUrls.js');
 
 const roomRecords = 2000000;
 const startIndex = 2000001;
-//change this to N number of records
+// change this to N number of records
 
 const filePath = path.join(__dirname, `../csv/photos_by_room${startIndex}.csv`);
 const writePhotos = fs.createWriteStream(`/Volumes/Seagate Backup Plus Drive/SDC_CSV_FILES/photos_by_room${startIndex}.csv`);
 writePhotos.write('room_id,photo_id,photo_url,photo_description,photo_order\n', 'utf8');
-
 
 const randomUrl = () => {
   const len = photosUrls.length;

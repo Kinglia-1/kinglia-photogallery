@@ -1,12 +1,12 @@
 const faker = require('faker');
-const TimeUuid = require('cassandra-driver').types.TimeUuid;
+const { TimeUuid } = require('cassandra-driver').types;
 const { photosUrls } = require('../cassandra/sdk.js');
 
 const roomRecords = 1000001;
-//change this to N number of records
+// change this to N number of records
 // X10 for photo records
 // console.log(photosUrls)
-//normal data
+// normal data
 const generatePhotosData = (urls) => {
   const newUrls = Array.from(urls);
   const photosData = [];

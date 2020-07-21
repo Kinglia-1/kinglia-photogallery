@@ -18,20 +18,19 @@ module.exports = {
     ecmaVersion: 6,
   },
   plugins: [
-    'react',
+    'react'
   ],
   rules: {
   },
-  parser: "babel-eslint",
+  parser: 'babel-eslint',
   parserOptions: {
-    sourceType: "module",
-    allowImportExportEverywhere: true
+    sourceType: 'module',
+    allowImportExportEverywhere: true,
   },
   rules: {
-    "import/extensions": [
+    'import/extensions': [
       1,
-      "ignorePackages"
-    ]
-  }
-}
-
+      'ignorePackages',
+    ],
+  },
+};

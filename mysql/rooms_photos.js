@@ -14,7 +14,6 @@ const startIndex = 8000001;
 const photosFile = path.join(__dirname, '../csv/photos.csv');
 const writePhotos = fs.createWriteStream(`/Volumes/Seagate Backup Plus Drive/SDC_CSV_FILES/photos${startIndex}.csv`);
 
-
 const writeMassiveRooms = (start, number, callback) => {
   let i = start;
   const stop = start + number;

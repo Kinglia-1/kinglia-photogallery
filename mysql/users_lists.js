@@ -3,7 +3,6 @@ const fs = require('fs');
 const path = require('path');
 const faker = require('faker');
 
-
 const usersFile = path.join(__dirname, '../csv/users.csv');
 const writeUsers = fs.createWriteStream(usersFile);
 writeUsers.write('user_id,user_name\n', 'utf8');
@@ -62,7 +61,7 @@ const writeMassiveLists = (start, number, callback) => {
       }
       const user_id = i;
       i += 1;
-      const random = Math.floor(Math.random() * (6 - 1)) + 1
+      const random = Math.floor(Math.random() * (6 - 1)) + 1;
       for (let k = 0; k < random; k++) {
         const list_id = listId;
         listsArray.push(listId);
@@ -127,19 +126,14 @@ const writeMassiveFavRooms = (callback) => {
   write();
 };
 
-
-
-
-
 writeMassiveUser(0, 10000, () => {
   writeUsers.end();
-  console.log('writing users finished')
-
+  console.log('writing users finished');
 });
 
 writeMassiveLists(0, 10000, () => {
   writeFavLists.end();
-  console.log('writing fav lists finished')
+  console.log('writing fav lists finished');
   writeMassiveFavRooms(() => {
     writeFavRooms.end();
     console.log('writing fav rooms finished');
@@ -151,10 +145,8 @@ writeMassiveLists(0, 10000, () => {
 //   console.log('writing fav rooms finished');
 // });
 
-
 //   writeMassiveFavRooms(listsArray, () => {
 //     writeFavRooms.end(() => {
 //       console.log('writing fave rooms finished');
 //     });
 //   });
-

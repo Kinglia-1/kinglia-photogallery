@@ -37,7 +37,7 @@ class SavePopupListItem extends React.Component {
     return (
       <tr className={styles.shareRow}>
         <td className={styles.shareTd}>
-          <span className={styles.saveListName}>{item.name}</span>
+          <span className={styles.saveListName}>{item.listName}</span>
           {like}
         </td>
       </tr>

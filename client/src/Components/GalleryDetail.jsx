@@ -75,7 +75,7 @@ class GalleryDetail extends React.Component {
       prevBtn = <button className={styles.prevBtn} type="submit" onClick={this.prevClickHandler}><SVG src={Prev} className="svg-prev" /></button>;
     }
 
-    if (currPhotoIdx === photos.length - 1) {
+    if (currPhotoIdx === photos.roomPhotos.length - 1) {
       nextBtn = null;
     } else {
       nextBtn = <button className={styles.nextBtn} type="submit" onClick={this.nextClickHandler}><SVG src={Next} /></button>;
@@ -104,7 +104,7 @@ class GalleryDetail extends React.Component {
           <span className={styles.idxInfo}>
             {currPhotoIdx + 1}
             {' / '}
-            {photos.length}
+            {photos.roomPhotos.length}
           </span>
           <button className={styles.saveListBtn} type="submit" onClick={this.saveClickHandler}><SVG src={Save} /></button>
           <button className={styles.shareBtn} type="submit" onClick={this.shareClickHandler}><SVG src={Share} /></button>
@@ -113,13 +113,13 @@ class GalleryDetail extends React.Component {
           <div className={styles.prevBtnWrapper}>
             {prevBtn}
           </div>
-          <img className={fadeClasses} src={photos[currPhotoIdx].photoUrl} />
+          <img className={fadeClasses} src={photos.roomPhotos[currPhotoIdx].photoUrl} />
           <div className={styles.nextBtnWrapper}>
             {nextBtn}
           </div>
         </div>
         <div className={styles.photoDescriptionContainer}>
-          <span className={styles.photoDescription}>{photos[currPhotoIdx].photoDescription}</span>
+          <span className={styles.photoDescription}>{photos.roomPhotos[currPhotoIdx].photoDescription}</span>
         </div>
         {popUp}
       </div>

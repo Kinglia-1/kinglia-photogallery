@@ -19,7 +19,7 @@ class GalleryMainGrid extends React.Component {
     const { photos, numPhotos } = this.props;
     return (
       <div className={styles.galleryMainGridContainer}>
-        <img className={styles.galleryMainGridImage} onClick={this.imageClickHandler} src={photos[0].photoUrl} />
+        <img className={styles.galleryMainGridImage} onClick={this.imageClickHandler} src={photos.roomPhotos[0].photoUrl} />
         <div className={styles.gridInfoBackground}></div>
         <span className={styles.galleryMainGridInfo}>
           1 / {numPhotos}
