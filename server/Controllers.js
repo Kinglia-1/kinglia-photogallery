@@ -85,9 +85,8 @@ const postSaveSql = (req, res) => {
 };
 
 const updateSaveSql = (req, res) => {
-  const { roomId } = req.params;
   const { _id, saved } = req.body;
-  connection.promise().execute('update save_status set fav_status = ? where room_id = ? and status_id = ?', [saved | 0, roomId, _id])
+  connection.promise().execute('update save_status set fav_status = ? where status_id = ?', [saved | 0, _id])
     .then((response) => {
       res.send('LIST UPDATED');
     })
@@ -96,6 +95,20 @@ const updateSaveSql = (req, res) => {
     });
 }
 
+const deleteList = (req, res) => {
+  const { _id } = req.body;
+  connection.promise().execute('delete from save_status where status_id = ?', [_id])
+    .then((response) => {
+      res.send('LIST DELETED');
+    })
+    .catch((err) => {
+      res.send(err);
+    });
+}
+
+
+
+/////////////////////////////
 function getPhotos(req, res) {
   const { roomId } = req.params;
   Models.getPhotos(roomId, (err, data) => {
@@ -138,5 +151,5 @@ const deleteItem = (req, res) => {
   console.log('trying to delete');
 };
 module.exports = {
-  getPhotos, postSaveToList, updateSaveToList, deleteItem, getPhotosSql, postSaveSql, getSaveSql, postSaveSql, updateSaveSql
+  getPhotos, postSaveToList, updateSaveToList, deleteItem, getPhotosSql, postSaveSql, getSaveSql, postSaveSql, updateSaveSql, deleteList
 };
