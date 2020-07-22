@@ -1,32 +1,46 @@
+const newrelic = require('newrelic');
 const express = require('express');
-
-const app = express();
+const cluster = require('cluster');
+const numCPUs = require('os').cpus().length;
 const bodyParser = require('body-parser');
 const path = require('path');
 const cors = require('cors');
 
-const Controllers = require('./Controllers.js');
+const {
+  getPhotosSql, getPhotos, postSaveToList, updateSaveToList, deleteItem, postSaveSql, getSaveSql, updateSaveSql, deleteList
+} = require('./Controllers.js');
 
-const port = 3004;
+if (cluster.isMaster) {
+  for (let i = 0; i < numCPUs; i++) {
+    cluster.fork();
+  }
+  cluster.on('exit', (worker, code, signal) => {
+    console.log('Worker %d died with code/signal %s. Restarting worker...', worker.process.pid, signal || code);
+    cluster.fork();
+  });
+} else {
+  const app = express();
 
-app.use(cors());
-app.use(bodyParser.json());
-app.use('/', express.static(path.join(__dirname, '../client/dist')));
+  const port = 3003;
+  app.use(cors());
+  app.use(express.json());
+  app.use('/rooms/:roomId', express.static(path.join(__dirname, '../client/dist')));
 
-app.get('/api/:roomId/photogallery', (req, res) => {
-  Controllers.getPhotos(req, res);
-});
+  app.get('/api/rooms/:roomId/photos', getPhotosSql);
 
-app.post('/api/:roomId/photogallery', (req, res) => {
-  Controllers.postSaveToList(req, res);
-});
+  app.route('/api/rooms/:roomId/save')
+    .get(getSaveSql)
+    .post(postSaveSql)
+    .put(updateSaveSql)
+    .delete(deleteList);
 
-app.put('/api/:roomId/photogallery', (req, res) => {
-  Controllers.updateSaveToList(req, res);
-});
 
-app.delete('/api/:roomId/photogallery', (req, res) => {
-  Controllers.deleteItem(req, res);
-});
 
-app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`));
+  app.route('/api/:roomId/photogallery')
+    .get(getPhotos)
+    .post(postSaveToList)
+    .put(updateSaveToList)
+    .delete(deleteItem);
+
+  app.listen(port, () => console.log(`listening at http://localhost:${port}`));
+}

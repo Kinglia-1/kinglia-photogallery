@@ -1,11 +1,12 @@
 const fs = require('fs');
 const faker = require('faker');
-const TimeUuid = require('cassandra-driver').types.TimeUuid;
+const { TimeUuid } = require('cassandra-driver').types;
 const csvWriter = require('csv-write-stream');
+
 const writer = csvWriter();
 const writerRooms = csvWriter();
 const path = require('path');
-const dayjs = require('dayjs')
+const dayjs = require('dayjs');
 const { roomRecords } = require('./normalData.js');
 
 const userNRecords = 1000000;
@@ -33,7 +34,7 @@ const writeFavRooms = (listIds, fileNum = 1) => {
       process.exit();
     });
   });
-}
+};
 
 const writeFavListsToCsv = (fileNum = 1) => {
   const filePath = path.join(__dirname, `../csv/cassfavlists${fileNum}.csv`);
@@ -52,18 +53,16 @@ const writeFavListsToCsv = (fileNum = 1) => {
         list_name: faker.address.city(),
       });
     }
-
   }
   writer.end(() => {
     fsStream.on('finish', () => {
       nextCsv = true;
       console.log(
-        'writing fav lists finished'
-      )
+        'writing fav lists finished',
+      );
     });
   });
   return listArray;
-
 };
 
 writeFavListsToCsv();

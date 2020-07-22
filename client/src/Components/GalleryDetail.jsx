@@ -1,10 +1,3 @@
-/* eslint-disable max-len */
-/* eslint-disable react/destructuring-assignment */
-/* eslint-disable jsx-a11y/control-has-associated-label */
-/* eslint-disable jsx-a11y/alt-text */
-/* eslint-disable react/prop-types */
-/* eslint-disable import/extensions */
-/* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
 import SVG from 'react-inlinesvg';
 import SavePopup from './SavePopup.jsx';
@@ -82,7 +75,7 @@ class GalleryDetail extends React.Component {
       prevBtn = <button className={styles.prevBtn} type="submit" onClick={this.prevClickHandler}><SVG src={Prev} className="svg-prev" /></button>;
     }
 
-    if (currPhotoIdx === photos.room_photos.length - 1) {
+    if (currPhotoIdx === photos.roomPhotos.length - 1) {
       nextBtn = null;
     } else {
       nextBtn = <button className={styles.nextBtn} type="submit" onClick={this.nextClickHandler}><SVG src={Next} /></button>;
@@ -111,7 +104,7 @@ class GalleryDetail extends React.Component {
           <span className={styles.idxInfo}>
             {currPhotoIdx + 1}
             {' / '}
-            {photos.room_photos.length}
+            {photos.roomPhotos.length}
           </span>
           <button className={styles.saveListBtn} type="submit" onClick={this.saveClickHandler}><SVG src={Save} /></button>
           <button className={styles.shareBtn} type="submit" onClick={this.shareClickHandler}><SVG src={Share} /></button>
@@ -120,13 +113,13 @@ class GalleryDetail extends React.Component {
           <div className={styles.prevBtnWrapper}>
             {prevBtn}
           </div>
-          <img className={fadeClasses} src={photos.room_photos[currPhotoIdx].imageUrl} />
+          <img className={fadeClasses} src={photos.roomPhotos[currPhotoIdx].photoUrl} />
           <div className={styles.nextBtnWrapper}>
             {nextBtn}
           </div>
         </div>
         <div className={styles.photoDescriptionContainer}>
-          <span className={styles.photoDescription}>{photos.room_photos[currPhotoIdx].description}</span>
+          <span className={styles.photoDescription}>{photos.roomPhotos[currPhotoIdx].photoDescription}</span>
         </div>
         {popUp}
       </div>

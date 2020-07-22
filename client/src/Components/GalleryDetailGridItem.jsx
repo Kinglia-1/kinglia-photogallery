@@ -24,7 +24,7 @@ class GalleryDetailGridItem extends React.Component {
       <div className={styles.gallerydetailgridSubContainer}>
         <div className={styles.gallerydetailgridItem}>
           <div className={styles.gallerydetailgridImage}>
-            <img onClick={this.imageClickHandler} src={photo.imageUrl} />
+            <img onClick={this.imageClickHandler} src={photo.photoUrl} />
           </div>
         </div>
       </div>

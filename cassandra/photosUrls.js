@@ -87,6 +87,6 @@ const photosUrls = [
   'https://bnbphotos23.s3-us-west-1.amazonaws.com/f87.webp',
   'https://bnbphotos23.s3-us-west-1.amazonaws.com/f88.webp',
   'https://bnbphotos23.s3-us-west-1.amazonaws.com/f89.webp',
-  'https://bnbphotos23.s3-us-west-1.amazonaws.com/f9.webp'
+  'https://bnbphotos23.s3-us-west-1.amazonaws.com/f9.webp',
 ];
 module.exports = { photosUrls };
