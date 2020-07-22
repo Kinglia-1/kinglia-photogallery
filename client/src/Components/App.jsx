@@ -1,6 +1,5 @@
 
 import React from 'react';
-import $ from 'jquery';
 import axios from 'axios';
 import GalleryMain from './GalleryMain.jsx';
 import GalleryDetail from './GalleryDetail.jsx';
