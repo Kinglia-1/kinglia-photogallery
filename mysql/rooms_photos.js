@@ -6,13 +6,13 @@ const faker = require('faker');
 const { photosUrls } = require('../cassandra/photosUrls.js');
 
 const roomsFile = path.join(__dirname, '../csv/rooms.csv');
-const writeRooms = fs.createWriteStream('/Volumes/Seagate Backup Plus Drive/SDC_CSV_FILES/rooms.csv');
+const writeRooms = fs.createWriteStream('/Volumes/seagate/SDC_CSV_FILES/rooms.csv');
 
 const nRooms = 2000000;
 const startIndex = 8000001;
 
 const photosFile = path.join(__dirname, '../csv/photos.csv');
-const writePhotos = fs.createWriteStream(`/Volumes/Seagate Backup Plus Drive/SDC_CSV_FILES/photos${startIndex}.csv`);
+const writePhotos = fs.createWriteStream(`/Volumes/seagate/SDC_CSV_FILES/photos${startIndex}.csv`);
 
 const writeMassiveRooms = (start, number, callback) => {
   let i = start;
@@ -81,7 +81,7 @@ const writeMassivePhotos = (start, number, callback) => {
   write();
 };
 
-// writeMassiveRooms(0, 10000001, () => {
+// writeMassiveRooms(1, 10000000, () => {
 //   writeRooms.end();
 //   console.log('writing rooms finished');
 // });
