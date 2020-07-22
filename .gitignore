@@ -1,4 +1,5 @@
 node_modules
 client/dist/bundle.js
 csv
-./config.js
+config.js
+
