@@ -1,5 +1,4 @@
-/* eslint-disable quote-props */
-const Gallery = require('../database/Gallery.js');
+/* eslint-disable quote-props 
 
 function getPhotos(roomId, callback) {
   Gallery.find({ 'room_id': roomId }, callback);

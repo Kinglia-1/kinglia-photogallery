@@ -1,4 +1,4 @@
-const Models = require('./Models.js');
+
 const connection = require('../database/mysql.js');
 const { getPhotosByRoomId } = require('../database/mysqlQueries.js');
 // require('events').EventEmitter.defaultMaxListeners = 100;

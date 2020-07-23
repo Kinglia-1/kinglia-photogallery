@@ -21,11 +21,11 @@ if (cluster.isMaster) {
 } else {
   const app = express();
 
-  const port = 3003;
+  const port = 3000;
   app.use(cors());
   app.use(express.json());
   app.use('/rooms/:roomId', express.static(path.join(__dirname, '../client/dist')));
-
+  app.use('/loaderio-d118376917fda174de6f3e4ed70f4c63.html', express.static(path.join(__dirname, '../client/dist/loaderio-d118376917fda174de6f3e4ed70f4c63.html')));
   app.get('/api/rooms/:roomId/photos', getPhotosSql);
 
   app.route('/api/rooms/:roomId/save')
