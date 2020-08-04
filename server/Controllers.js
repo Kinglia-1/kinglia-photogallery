@@ -1,33 +1,12 @@
 
 const connection = require('../database/mysql.js');
 const { getPhotosByRoomId } = require('../database/mysqlQueries.js');
-// require('events').EventEmitter.defaultMaxListeners = 100;
 
-// const getPhotosSql = (req, res) => {
-//   const id = req.params.roomId;
-//   connection.query('select photo_url, photo_description from photos where room_id = ?', [id], (err, rows) => {
-//     if (err) {
-//       console.log(err)
-//     } else {
-//       const len = rows.length;
-//       for (let i = 0; i < len; i++) {
-//         rows[i].photoUrl = rows[i].photo_url;
-//         delete rows[i].photo_url;
-//         rows[i].photoDescription = rows[i].photo_description;
-//         delete rows[i].photo_description;
-//       }
-//       res.send(rows);
-//     }
-
-//   });
-// };
-// START TRANSACTION READ ONLY;
 
 const getPhotosSql = (req, res) => {
   const id = req.params.roomId;
   connection.promise().execute('select photo_url, photo_description from photos where room_id = ?', [id])
     .then((data) => {
-      // console.log('FIRST DATA',data)
       const newData = Array.from(data[0]);
       const len = newData.length;
       for (let i = 0; i < len; i++) {
@@ -76,7 +55,6 @@ const postSaveSql = (req, res) => {
   const { listName, saved } = req.body;
   connection.promise().execute('insert into save_status(list_name, fav_status, room_id) values(?, ?, ?)', [listName, saved, roomId])
     .then((response) => {
-      // console.log('POST RESPONSE', response);
       res.send('NEW LIST POSTED');
     })
     .catch((err) => {

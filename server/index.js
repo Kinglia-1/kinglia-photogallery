@@ -26,6 +26,7 @@ if (cluster.isMaster) {
   app.use(express.json());
   app.use('/rooms/:roomId', express.static(path.join(__dirname, '../client/dist')));
   app.use('/loaderio-d118376917fda174de6f3e4ed70f4c63.html', express.static(path.join(__dirname, '../client/dist/loaderio-d118376917fda174de6f3e4ed70f4c63.html')));
+
   app.get('/api/rooms/:roomId/photos', getPhotosSql);
 
   app.route('/api/rooms/:roomId/save')
@@ -33,14 +34,6 @@ if (cluster.isMaster) {
     .post(postSaveSql)
     .put(updateSaveSql)
     .delete(deleteList);
-
-
-
-  app.route('/api/:roomId/photogallery')
-    .get(getPhotos)
-    .post(postSaveToList)
-    .put(updateSaveToList)
-    .delete(deleteItem);
 
   app.listen(port, () => console.log(`listening at http://localhost:${port}`));
 }

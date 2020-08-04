@@ -4,15 +4,17 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "webpack -d --watch",
-    "start": "nodemon server/index.js",
+    "build": "webpack -p --watch",
+    "start": "export NODE_ENV=production && nodemon server/index.js",
     "db:setup": "node database/seed.js",
     "test": "jest",
     "seedcqlphotos": "node --max-old-space-size=8192 ./cassandra/seedPhotos.js",
     "seedcqllists": "node --max-old-space-size=8192 ./cassandra/seedFavLists.js",
     "seedsqlphotos": "node --max-old-space-size=8192 ./mysql/rooms_photos.js",
     "seedsqllists": "node --max-old-space-size=8192 ./mysql/users_lists.js",
-    "k6": "k6 run loadtest.js"
+    "k6": "k6 run loadtest.js",
+    "startpm": "pm2 kill && pm2 start server/index.js --watch --env production",
+    "stoppm": "pm2 stop all"
   },
   "author": "Jin Park",
   "license": "ISC",
